@@ -24,19 +24,57 @@
 - (IBAction)btn1:(id)sender {
    
     location=[tf1 stringValue];
-    output=runCommand(location);
+    NSString * decrunch = [NSString stringWithFormat:@"%@/bin/res",location];
+    NSString * currentDirectoryPath = [NSString stringWithFormat:@"%@",location];
+    
+    NSString * launchPath = @"/bin/rm";
+    NSArray *arguments = [NSArray arrayWithObjects:
+                          @"-R",
+                          @"crunch",
+                          nil];
+    
+    NSString * launchPath2 = @"/Users/cpuser/Documents/adt-bundle-mac-x86_64-20140702/sdk/tools/android";
+    NSArray *arguments2 = [NSArray arrayWithObjects:
+                          @"update",
+                          @"project",
+                          @"-p",
+                          currentDirectoryPath,
+                          @"-s",
+                          nil];
+    
+    NSString * launchPath3 = @"/Users/cpuser/Desktop/apache-ant-1.9.4/bin/ant";
+    NSArray *arguments3 = [NSArray arrayWithObjects:
+                          @"debug",
+                          nil];
+    
+    
+    output2=runCommand(nil, launchPath2,arguments2);
+    output3=runCommand( currentDirectoryPath,launchPath3,arguments3);
+    NSLog(@"%@\n%@\n%@",output,output2,output3);
+    NSString *string = [NSString stringWithFormat:@"%@\n%@\n%@",output,output2,output3];
+    [tv1 setString:string];
+    
+    
    
 }
 
-NSString *runCommand(NSString *location){
+- (IBAction)decrunch:(id)sender {
+    output=runCommand(decrunch, launchPath,arguments);
+}
+
+NSString *runCommand(NSString * currentDirectoryPath,
+                     NSString * launchPath,
+                     NSArray * arguments1
+                      ){
     NSTask *task;
+    
     task = [[NSTask alloc] init];
-    [task setCurrentDirectoryPath:@"/Users/cpuser/Desktop/ant"];
-    [task setLaunchPath: @"/Users/cpuser/Documents/adt-bundle-mac-x86_64-20140702/sdk/tools/android"];
-    NSArray *arguments = [NSArray arrayWithObjects:
-                          @"android update project -p .",
-                          nil];
-    NSLog(@"run command: %@ ",location);
+    if(currentDirectoryPath!=nil){
+        [task setCurrentDirectoryPath:currentDirectoryPath];
+    }
+    [task setLaunchPath: launchPath];
+    NSArray *arguments = arguments1;
+
     [task setArguments: arguments];
     
     NSPipe *pipe;
@@ -56,6 +94,7 @@ NSString *runCommand(NSString *location){
     
     return output;
 }
+
 
 
 

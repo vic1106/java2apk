@@ -12,20 +12,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
 - (void)setRepresentedObject:(id)representedObject {
     [super setRepresentedObject:representedObject];
 
-    // Update the view, if already loaded.
 }
 
 - (IBAction)btn1:(id)sender {
    
-    location=[tf1 stringValue];
+    NSString *location=[tf1 stringValue];
     NSString * decrunch = [NSString stringWithFormat:@"%@/bin/res",location];
     NSString * currentDirectoryPath = [NSString stringWithFormat:@"%@",location];
+    
     
     NSString * launchPath = @"/bin/rm";
     NSArray *arguments = [NSArray arrayWithObjects:
@@ -35,37 +34,35 @@
     
     NSString * launchPath2 = @"/Users/cpuser/Documents/adt-bundle-mac-x86_64-20140702/sdk/tools/android";
     NSArray *arguments2 = [NSArray arrayWithObjects:
-                          @"update",
-                          @"project",
-                          @"-p",
-                          currentDirectoryPath,
-                          @"-s",
-                          nil];
+                           @"update",
+                           @"project",
+                           @"-p",
+                           currentDirectoryPath,
+                           @"-s",
+                           nil];
     
     NSString * launchPath3 = @"/Users/cpuser/Desktop/apache-ant-1.9.4/bin/ant";
     NSArray *arguments3 = [NSArray arrayWithObjects:
-                          @"debug",
-                          nil];
+                           @"debug",
+                           nil];
     
+    NSString*output1=runCommand(decrunch, launchPath,arguments);
+    NSString*output2=runCommand(nil, launchPath2,arguments2);
+    NSString*output3=runCommand( currentDirectoryPath,launchPath3,arguments3);
     
-    output2=runCommand(nil, launchPath2,arguments2);
-    output3=runCommand( currentDirectoryPath,launchPath3,arguments3);
-    NSLog(@"%@\n%@\n%@",output,output2,output3);
-    NSString *string = [NSString stringWithFormat:@"%@\n%@\n%@",output,output2,output3];
+    NSLog(@"%@\n%@\n%@",output1,output2,output3);
+    NSString *string = [NSString stringWithFormat:@"%@\n%@\n%@",output1,output2,output3];
     [tv1 setString:string];
     
     
    
 }
 
-- (IBAction)decrunch:(id)sender {
-    output=runCommand(decrunch, launchPath,arguments);
-}
 
 NSString *runCommand(NSString * currentDirectoryPath,
                      NSString * launchPath,
                      NSArray * arguments1
-                      ){
+                     ){
     NSTask *task;
     
     task = [[NSTask alloc] init];
@@ -74,7 +71,7 @@ NSString *runCommand(NSString * currentDirectoryPath,
     }
     [task setLaunchPath: launchPath];
     NSArray *arguments = arguments1;
-
+    
     [task setArguments: arguments];
     
     NSPipe *pipe;
@@ -94,8 +91,6 @@ NSString *runCommand(NSString * currentDirectoryPath,
     
     return output;
 }
-
-
 
 
 

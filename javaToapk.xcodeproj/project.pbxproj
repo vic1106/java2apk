@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D89060501A80720200B810BF /* ViewController_Lib.m in Sources */ = {isa = PBXBuildFile; fileRef = D890604F1A80720200B810BF /* ViewController_Lib.m */; };
+		D8C713991A81D91000D5FF55 /* ViewController_uploadApk.m in Sources */ = {isa = PBXBuildFile; fileRef = D8C713971A81D91000D5FF55 /* ViewController_uploadApk.m */; };
+		D8C713A01A822D7F00D5FF55 /* libchilkatCocoa.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D8C7139E1A822D7F00D5FF55 /* libchilkatCocoa.a */; };
+		D8C713A11A822D7F00D5FF55 /* libchilkatCocoaDyn.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D8C7139F1A822D7F00D5FF55 /* libchilkatCocoaDyn.dylib */; };
 		D8D4EE4A1A787A2800E3E7B5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D8D4EE491A787A2800E3E7B5 /* AppDelegate.m */; };
 		D8D4EE4C1A787A2800E3E7B5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D8D4EE4B1A787A2800E3E7B5 /* main.m */; };
 		D8D4EE4F1A787A2800E3E7B5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8D4EE4E1A787A2800E3E7B5 /* ViewController.m */; };
@@ -26,6 +30,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D890604E1A80720200B810BF /* ViewController_Lib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController_Lib.h; sourceTree = "<group>"; };
+		D890604F1A80720200B810BF /* ViewController_Lib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController_Lib.m; sourceTree = "<group>"; };
+		D8C713961A81D91000D5FF55 /* ViewController_uploadApk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController_uploadApk.h; sourceTree = "<group>"; };
+		D8C713971A81D91000D5FF55 /* ViewController_uploadApk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController_uploadApk.m; sourceTree = "<group>"; };
+		D8C7139E1A822D7F00D5FF55 /* libchilkatCocoa.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libchilkatCocoa.a; sourceTree = "<group>"; };
+		D8C7139F1A822D7F00D5FF55 /* libchilkatCocoaDyn.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libchilkatCocoaDyn.dylib; sourceTree = "<group>"; };
 		D8D4EE431A787A2800E3E7B5 /* javaToapk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = javaToapk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8D4EE471A787A2800E3E7B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D8D4EE481A787A2800E3E7B5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -45,6 +55,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8C713A01A822D7F00D5FF55 /* libchilkatCocoa.a in Frameworks */,
+				D8C713A11A822D7F00D5FF55 /* libchilkatCocoaDyn.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,9 +70,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D8C7139D1A822D7F00D5FF55 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				D8C7139E1A822D7F00D5FF55 /* libchilkatCocoa.a */,
+				D8C7139F1A822D7F00D5FF55 /* libchilkatCocoaDyn.dylib */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
 		D8D4EE3A1A787A2800E3E7B5 = {
 			isa = PBXGroup;
 			children = (
+				D8C7139D1A822D7F00D5FF55 /* lib */,
 				D8D4EE451A787A2800E3E7B5 /* javaToapk */,
 				D8D4EE5C1A787A2800E3E7B5 /* javaToapkTests */,
 				D8D4EE441A787A2800E3E7B5 /* Products */,
@@ -79,10 +101,14 @@
 		D8D4EE451A787A2800E3E7B5 /* javaToapk */ = {
 			isa = PBXGroup;
 			children = (
+				D890604E1A80720200B810BF /* ViewController_Lib.h */,
+				D890604F1A80720200B810BF /* ViewController_Lib.m */,
 				D8D4EE481A787A2800E3E7B5 /* AppDelegate.h */,
 				D8D4EE491A787A2800E3E7B5 /* AppDelegate.m */,
 				D8D4EE4D1A787A2800E3E7B5 /* ViewController.h */,
 				D8D4EE4E1A787A2800E3E7B5 /* ViewController.m */,
+				D8C713961A81D91000D5FF55 /* ViewController_uploadApk.h */,
+				D8C713971A81D91000D5FF55 /* ViewController_uploadApk.m */,
 				D8D4EE501A787A2800E3E7B5 /* Images.xcassets */,
 				D8D4EE521A787A2800E3E7B5 /* Main.storyboard */,
 				D8D4EE461A787A2800E3E7B5 /* Supporting Files */,
@@ -215,9 +241,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D89060501A80720200B810BF /* ViewController_Lib.m in Sources */,
 				D8D4EE4F1A787A2800E3E7B5 /* ViewController.m in Sources */,
 				D8D4EE4C1A787A2800E3E7B5 /* main.m in Sources */,
 				D8D4EE4A1A787A2800E3E7B5 /* AppDelegate.m in Sources */,
+				D8C713991A81D91000D5FF55 /* ViewController_uploadApk.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,6 +362,11 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = javaToapk/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/cpuser/Desktop/chilkat-9.5.0-macosx-objc/lib",
+					"$(PROJECT_DIR)/lib",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -345,6 +378,11 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = javaToapk/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/cpuser/Desktop/chilkat-9.5.0-macosx-objc/lib",
+					"$(PROJECT_DIR)/lib",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -404,6 +442,7 @@
 				D8D4EE651A787A2900E3E7B5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D8D4EE661A787A2900E3E7B5 /* Build configuration list for PBXNativeTarget "javaToapkTests" */ = {
 			isa = XCConfigurationList;
@@ -412,6 +451,7 @@
 				D8D4EE681A787A2900E3E7B5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

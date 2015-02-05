@@ -11,7 +11,12 @@
 @interface ViewController_uploadApk : NSViewController{
     
     IBOutlet NSTextField *tf_apkPath;
-    IBOutlet NSScrollView *tv_apk;
+    IBOutlet NSTextView *tv_apk;
+    IBOutlet NSTextField *tf_FTP;
+    IBOutlet NSTextField *tf_Name;
+    IBOutlet NSTextField *tf_Password;
+    IBOutlet NSTextField *tf_apkName;
+    
 //    BRRequestUpload *uploadData;  // Black Raccoon's upload object
 //    NSData *uploadData;
 }

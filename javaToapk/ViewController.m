@@ -58,6 +58,10 @@
    
 }
 
+- (IBAction)upload:(id)sender {
+    
+}
+
 
 NSString *runCommand(NSString * currentDirectoryPath,
                      NSString * launchPath,

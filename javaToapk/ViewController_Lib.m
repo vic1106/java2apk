@@ -65,6 +65,7 @@
     
     NSLog(@"%d",(int)arr.count);
 
+    if(![libLocation isEqualTo:@""]){
     
         for(int i=0;i<arr.count;i++){
             
@@ -75,21 +76,27 @@
             if(![originalString isEqualToString: libLocation]){
                 d=i;
             }else{
+                NSString *string = @"Added already!";
+                [tv_Lib setString:string];
                 break;
             }
         }
     if(d==arr.count-1){
         contents = [contents stringByAppendingString:[NSString stringWithFormat:@"%@\n",libLocation]];
         [contents writeToFile:fileAtPath atomically:YES encoding:NSUTF8StringEncoding error:nil];
+        
+        NSString* output1=runCommand2(decrunch, launchPath,arguments);
+        NSString* output2=runCommand2(libLocation, launchPath2,arguments2);
+        NSLog(@"%@\n%@\n",output1,output2);
+        NSString *string = [NSString stringWithFormat:@"%@\n%@\n",output1,output2];
+        [tv_Lib setString:string];
+        }
+    }else{
+        NSString *string = @"Please enter the path of library!";
+        [tv_Lib setString:string];
     }
     
     
-    
-    NSString* output1=runCommand2(decrunch, launchPath,arguments);
-    NSString* output2=runCommand2(libLocation, launchPath2,arguments2);
-    NSLog(@"%@\n%@\n",output1,output2);
-    NSString *string = [NSString stringWithFormat:@"%@\n%@\n",output1,output2];
-   [tv_Lib setString:string];
 }
 
 - (IBAction)btn_Chk:(id)sender {
@@ -109,7 +116,6 @@
         
         originalString = arr[i];
         
-        NSString *target =[tf_target stringValue];
         NSString * decrunch = [NSString stringWithFormat:@"%@/bin/res",originalString];
         
         
@@ -119,36 +125,27 @@
                               @"crunch",
                               nil];
         NSString * launchPath2 = @"/Users/cpuser/Documents/adt-bundle-mac-x86_64-20140702/sdk/tools/android";
-        if([target isEqualToString:@""]){
-            arguments2 = [NSArray arrayWithObjects:
+        
+        arguments2 = [NSArray arrayWithObjects:
                           @"update",
                           @"lib-project",
                           @"-p",
                           originalString,
                           nil];
-        }else{
-            arguments2 = [NSArray arrayWithObjects:
-                          @"update",
-                          @"lib-project",
-                          @"-p",
-                          originalString,
-                          @"-t",
-                          target,
-                          nil];
-        }
+        
+    
+        
         
         NSString* output1=runCommand2(decrunch, launchPath,arguments);
         NSString* output2=runCommand2(originalString, launchPath2,arguments2);
         NSLog(@"%@\n%@\n",output1,output2);
-        NSString *string = [NSString stringWithFormat:@"%@\n%@\n",output1,output2];
+        NSString *string = [NSString stringWithFormat:@"Checked already!\n\n%@\nLib Num: %d\n",contents,i+1];
         [tv_Lib setString:string];
-        
     }
-}
-
-- (IBAction)btnRemove:(id)sender {
     
 }
+
+
 
 
 

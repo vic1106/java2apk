@@ -11,11 +11,11 @@
 @interface ViewController : NSViewController{
     
     IBOutlet NSTextField *tf1;
-    IBOutlet NSTextField *lb1;
     IBOutlet NSTextView *tv1;
     
 }
 - (IBAction)btn1:(id)sender;
+- (IBAction)upload:(id)sender;
 
 
 

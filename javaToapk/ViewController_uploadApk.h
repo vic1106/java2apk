@@ -16,6 +16,7 @@
     IBOutlet NSTextField *tf_Name;
     IBOutlet NSTextField *tf_Password;
     IBOutlet NSTextField *tf_apkName;
+    IBOutlet NSTextField *tf_Port;
     
 //    BRRequestUpload *uploadData;  // Black Raccoon's upload object
 //    NSData *uploadData;

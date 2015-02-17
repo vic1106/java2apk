@@ -7,7 +7,6 @@
 //
 
 #import "ViewController_uploadApk.h"
-
 #import "CkoSFtp.h"
 
 @interface ViewController_uploadApk ()
@@ -18,6 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title=@"Upload Server";
     
     // Do view setup here.
 }
@@ -49,13 +49,23 @@
     int port;
     NSString *hostname;
     hostname = [NSString stringWithFormat:@"%@", tf_FTP];
-    port = 22;
-    success = [sftp Connect: hostname port: [NSNumber numberWithInt: port]];
-    if (success != YES) {
-        NSLog(@"%@",sftp.LastErrorText);
-        return;
+    NSString *portString=[tf_Port stringValue];
+    if(![portString isEqualToString:@""]){
+        port = [tf_Port intValue];
+        success = [sftp Connect: hostname port: [NSNumber numberWithInt: port]];
+        if (success != YES) {
+            NSLog(@"%@",sftp.LastErrorText);
+            return;
+        }
+    }else{
+        port = 22;
+        success = [sftp Connect: hostname port: [NSNumber numberWithInt: port]];
+        if (success != YES) {
+            NSLog(@"%@",sftp.LastErrorText);
+            return;
+        }
+
     }
-    
     //  Authenticate with the SSH server.  Chilkat SFTP supports
     //  both password-based authenication as well as public-key
     //  authentication.  This example uses password authenication.
@@ -87,7 +97,6 @@
     NSLog(@"%@",@"Success.");
 
 }
-
 
 
 @end

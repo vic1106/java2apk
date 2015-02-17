@@ -8,15 +8,17 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface ViewController : NSViewController{
+@interface ViewController : NSViewController<NSApplicationDelegate, NSTableViewDelegate,NSTableViewDataSource>{
     
     IBOutlet NSTextField *tf1;
     IBOutlet NSTextView *tv1;
     
+    IBOutlet NSTableView *table;
+    NSArray *_dataSource;
+    NSArray *arr;
+    
 }
 - (IBAction)btn1:(id)sender;
-- (IBAction)upload:(id)sender;
-
 
 
 

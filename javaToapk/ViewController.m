@@ -12,6 +12,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title=@"Build App";
+    [tv1 setString:@"1. Put the android project path in the\n    textField\n2. Click the Create button"];
+    
 }
 
 - (void)setRepresentedObject:(id)representedObject {
@@ -58,10 +61,47 @@
    
 }
 
-- (IBAction)upload:(id)sender {
+
+
+- (void) awakeFromNib {
+    
+    NSString* filePath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString* fileName = @"libRecord_j2a.txt";
+    NSString* fileAtPath = [filePath stringByAppendingPathComponent:fileName];
+    
+    NSString *contents= [NSString stringWithContentsOfFile:fileAtPath];
+    arr = [contents componentsSeparatedByCharactersInSet:
+           [NSCharacterSet characterSetWithCharactersInString:@"\n"]];
+    
+    _dataSource = arr;
+    table.dataSource = self;
+    table.delegate = self;
     
 }
 
+- (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
+    return _dataSource.count;
+}
+
+- (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row;
+{
+    return [_dataSource objectAtIndex:row];
+}
+
+- (BOOL)tableView:(NSTableView *)tableView shouldEditTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
+{
+    return NO;
+}
+
+- (void)tableViewSelectionDidChange:(NSNotification *)notification {
+    NSLog(@"tableViewSelectionDidChange - %ld", table.selectedRow);
+    if(table.selectedRow!=0){
+        NSString *abc = [NSString stringWithFormat:@"%@",arr[table.selectedRow]];
+        [tv1 setString:abc];
+    }else{
+        [tv1 setString:@""];
+    }
+}
 
 NSString *runCommand(NSString * currentDirectoryPath,
                      NSString * launchPath,
@@ -95,7 +135,6 @@ NSString *runCommand(NSString * currentDirectoryPath,
     
     return output;
 }
-
 
 
 @end

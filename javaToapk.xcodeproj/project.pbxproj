@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C3121411A9C73D600582B83 /* libchilkatCocoaDyn.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1C3121401A9C73D600582B83 /* libchilkatCocoaDyn.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		1C3121421A9C73E600582B83 /* libchilkatCocoaDyn.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C3121401A9C73D600582B83 /* libchilkatCocoaDyn.dylib */; };
 		D89060501A80720200B810BF /* ViewController_Lib.m in Sources */ = {isa = PBXBuildFile; fileRef = D890604F1A80720200B810BF /* ViewController_Lib.m */; };
 		D8C713991A81D91000D5FF55 /* ViewController_uploadApk.m in Sources */ = {isa = PBXBuildFile; fileRef = D8C713971A81D91000D5FF55 /* ViewController_uploadApk.m */; };
-		D8CE35681A8357DB009B6E2F /* libchilkatCocoaDyn.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D8CE35671A8357DB009B6E2F /* libchilkatCocoaDyn.dylib */; };
 		D8D4EE4A1A787A2800E3E7B5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D8D4EE491A787A2800E3E7B5 /* AppDelegate.m */; };
 		D8D4EE4C1A787A2800E3E7B5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D8D4EE4B1A787A2800E3E7B5 /* main.m */; };
 		D8D4EE4F1A787A2800E3E7B5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8D4EE4E1A787A2800E3E7B5 /* ViewController.m */; };
@@ -28,7 +29,21 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		1C31213F1A9C73C000582B83 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 6;
+			files = (
+				1C3121411A9C73D600582B83 /* libchilkatCocoaDyn.dylib in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		1C3121401A9C73D600582B83 /* libchilkatCocoaDyn.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libchilkatCocoaDyn.dylib; sourceTree = "<group>"; };
 		D890604E1A80720200B810BF /* ViewController_Lib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController_Lib.h; sourceTree = "<group>"; };
 		D890604F1A80720200B810BF /* ViewController_Lib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController_Lib.m; sourceTree = "<group>"; };
 		D8C713961A81D91000D5FF55 /* ViewController_uploadApk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController_uploadApk.h; sourceTree = "<group>"; };
@@ -104,7 +119,6 @@
 		D8CE35571A8350EA009B6E2F /* CkoZipCrc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CkoZipCrc.h; sourceTree = "<group>"; };
 		D8CE35581A8350EA009B6E2F /* CkoZipEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CkoZipEntry.h; sourceTree = "<group>"; };
 		D8CE35591A8350EA009B6E2F /* CkoZipProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CkoZipProgress.h; sourceTree = "<group>"; };
-		D8CE35671A8357DB009B6E2F /* libchilkatCocoaDyn.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libchilkatCocoaDyn.dylib; sourceTree = "<group>"; };
 		D8D4EE431A787A2800E3E7B5 /* javaToapk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = javaToapk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8D4EE471A787A2800E3E7B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D8D4EE481A787A2800E3E7B5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -124,7 +138,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D8CE35681A8357DB009B6E2F /* libchilkatCocoaDyn.dylib in Frameworks */,
+				1C3121421A9C73E600582B83 /* libchilkatCocoaDyn.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,7 +233,7 @@
 		D8D4EE3A1A787A2800E3E7B5 = {
 			isa = PBXGroup;
 			children = (
-				D8CE35671A8357DB009B6E2F /* libchilkatCocoaDyn.dylib */,
+				1C3121401A9C73D600582B83 /* libchilkatCocoaDyn.dylib */,
 				D8CE35121A8350EA009B6E2F /* include */,
 				D8D4EE451A787A2800E3E7B5 /* javaToapk */,
 				D8D4EE5C1A787A2800E3E7B5 /* javaToapkTests */,
@@ -290,6 +304,7 @@
 				D8D4EE3F1A787A2800E3E7B5 /* Sources */,
 				D8D4EE401A787A2800E3E7B5 /* Frameworks */,
 				D8D4EE411A787A2800E3E7B5 /* Resources */,
+				1C31213F1A9C73C000582B83 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -502,9 +517,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/cpuser/Desktop/chilkat-9.5.0-macosx-objc/lib",
-					"$(PROJECT_DIR)/lib",
-					/Users/cpuser/Desktop/lib,
 					"$(PROJECT_DIR)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -520,9 +532,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/cpuser/Desktop/chilkat-9.5.0-macosx-objc/lib",
-					"$(PROJECT_DIR)/lib",
-					/Users/cpuser/Desktop/lib,
 					"$(PROJECT_DIR)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";

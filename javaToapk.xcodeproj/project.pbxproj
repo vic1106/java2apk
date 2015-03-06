@@ -257,13 +257,13 @@
 				D890604F1A80720200B810BF /* ViewController_Lib.m */,
 				D8D4EE481A787A2800E3E7B5 /* AppDelegate.h */,
 				D8D4EE491A787A2800E3E7B5 /* AppDelegate.m */,
+				D8D4EE461A787A2800E3E7B5 /* Supporting Files */,
 				D8D4EE4D1A787A2800E3E7B5 /* ViewController.h */,
 				D8D4EE4E1A787A2800E3E7B5 /* ViewController.m */,
 				D8C713961A81D91000D5FF55 /* ViewController_uploadApk.h */,
 				D8C713971A81D91000D5FF55 /* ViewController_uploadApk.m */,
 				D8D4EE501A787A2800E3E7B5 /* Images.xcassets */,
 				D8D4EE521A787A2800E3E7B5 /* Main.storyboard */,
-				D8D4EE461A787A2800E3E7B5 /* Supporting Files */,
 			);
 			path = javaToapk;
 			sourceTree = "<group>";
@@ -519,6 +519,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -534,6 +535,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

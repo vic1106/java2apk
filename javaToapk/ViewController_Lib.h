@@ -19,8 +19,9 @@
     IBOutlet NSTextView *tv_Lib;
     IBOutlet NSTextField *tf_Lib;
     IBOutlet NSTextField *tf_target;
-    IBOutlet NSTextField *tf_libname;
+    IBOutlet NSTextView *tv_detail;
     
+    IBOutlet NSTextField *lb_warning;
     IBOutlet NSTableView *table;
     NSArray *_dataSource;
     NSArray *arr;
@@ -29,6 +30,9 @@
 - (IBAction)btn_Lib:(id)sender;
 - (IBAction)btn_Chk:(id)sender;
 - (IBAction)btnRemove:(id)sender;
+
+@property (strong) IBOutlet NSPathControl *locationPath;
+- (IBAction)lcPath:(id)sender;
 
 
 

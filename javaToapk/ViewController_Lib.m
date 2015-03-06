@@ -17,16 +17,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title=@"Update Library";
-    NSString *target_list = [NSString stringWithFormat:@"Target list : \n%@\n%@\n%@\n%@\n%@\n%@\n%@\n%@\n%@\n",@"1- Documentation for Android SDK, API 21, revision 1",
-                             @"2- SDK Platform Android 5.0.1, API 21, revision 2",
-                             @"3- SDK Platform Android 4.4W.2, API 20, revision 2",
-                             @"4- Samples for SDK API 21, revision 4",
-                             @"5- Samples for SDK API 20, revision 3",
-                             @"6- Google APIs, Android API 21, revision 1",
-                             @"7- Google APIs ARM EABI v7a System Image, Google Inc. API 21, revision 3",
-                             @"8- Google APIs Intel x86 Atom_64 System Image, Google Inc. API 21, revision 3",
-                             @"9- Google APIs Intel x86 Atom System Image, Google Inc. API 21, revision 3"];
-    [tv_Lib setString:target_list];
+    NSString *target_list = [NSString stringWithFormat:@"Target list : \n%@\n%@\n%@\n%@\n%@\n%@\n%@\n",
+                             @"1- Android 4.1.2, API level: 16",
+                             @"2- Android 4.4.2, API level: 19",
+                             @"3- Android 4.4W, API level: 20",
+                             @"4- Google APIs, Android 4.1.2, API level: 16",
+                             @"5- Glass Development Kit Preview, Android 4.4.2, API level: 19",
+                             @"6- Google APIs, Android 4.4.2, API level: 19",
+                             @"7- Google APIs (x86 System Image), Android 4.4.2, API level: 19"
+                             ];
+    [tv_detail setString:target_list];
+    
+}
+
+- (IBAction)lcPath:(id)sender {
+    NSString *projectLocation  = [NSString stringWithFormat:@"%@",self.locationPath.URL.path];
+    [tf_Lib setStringValue:projectLocation];
     
 }
 
@@ -90,7 +96,7 @@
 //                    NSString *string = [NSString stringWithFormat:@"%@\n",contents];
 //                    [tv_Record setString:string];
                     [tf_Lib setStringValue:@""];
-                    
+                    [lb_warning setStringValue:@""];
                     _dataSource = arr;
                     table.dataSource = self;
                     table.delegate = self;
@@ -98,18 +104,13 @@
     }
         
     }else{
-        NSString *string = @"Please enter the path of library!";
-        [tv_Lib setString:string];
+        [lb_warning setStringValue:@"Please enter the path of library!"];
     }
 }
-
-
-
 
 - (IBAction)btn_Lib:(id)sender {
     
     NSString *libLocation =[tf_Lib stringValue];
-    NSString *libName =[tf_libname stringValue];
     NSString *target =[tf_target stringValue];
     NSString * decrunch = [NSString stringWithFormat:@"%@/bin/res",libLocation];
     
@@ -119,7 +120,7 @@
                           @"-R",
                           @"crunch",
                           nil];
-    NSString * launchPath2 = @"/Users/cpuser/Documents/adt-bundle-mac-x86_64-20140702/sdk/tools/android";
+    NSString * launchPath2 = @"~/adt-bundle-mac-x86_64-20140702/sdk/tools/android";
     if([target isEqualToString:@""]){
         arguments2 = [NSArray arrayWithObjects:
                       @"update",
@@ -164,7 +165,7 @@
                 d=i;
             }else{
                 NSString *string = @"Added already!";
-                [tv_Lib setString:string];
+                [lb_warning setStringValue:string];
                 [tf_Lib setStringValue:@""];
                 break;
             }
@@ -181,63 +182,76 @@
             NSString *string = [NSString stringWithFormat:@"%@\n%@\n",output1,output2];
             [tv_Lib setString:string];
             [tf_Lib setStringValue:@""];
+            [lb_warning setStringValue:@" "];
 //            NSString *string2 = [NSString stringWithFormat:@"%@\n",contents];
 //            [tv_Record setString:string2];
             
+        }else{
+            NSString* output1=runCommand2(decrunch, launchPath,arguments);
+            NSString* output2=runCommand2(libLocation, launchPath2,arguments2);
+            NSLog(@"%@\n%@\n",output1,output2);
+            NSString *string = [NSString stringWithFormat:@"%@\n%@\n",output1,output2];
+            [tv_Lib setString:string];
+            [tf_Lib setStringValue:@""];
+            NSString *string1 = @"Added already!";
+            [lb_warning setStringValue:string1];
         }
     }else{
-        NSString *string = @"Please enter the path of library!";
-        [tv_Lib setString:string];
+        [lb_warning setStringValue:@"Please enter the path of library!"];
     }
     
     
 }
 
 - (IBAction)btn_Chk:(id)sender {
-    
+   
     NSString* filePath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     NSString* fileName = @"libRecord_j2a.txt";
     NSString* fileAtPath = [filePath stringByAppendingPathComponent:fileName];
     
     NSString *contents = [NSString stringWithContentsOfFile:fileAtPath];
-    arr = [contents componentsSeparatedByCharactersInSet:
-                    [NSCharacterSet characterSetWithCharactersInString:@"\n"]];
-    
-    _dataSource = arr;
-    table.dataSource = self;
-    table.delegate = self;
-    
-    for(i=1;i<arr.count;i++){
+    if(![contents isEqualToString:@"Library Record:\n"]){
+        arr = [contents componentsSeparatedByCharactersInSet:
+               [NSCharacterSet characterSetWithCharactersInString:@"\n"]];
         
-        originalString = arr[i];
-
-        NSString * decrunch = [NSString stringWithFormat:@"%@/bin/res",originalString];
+        _dataSource = arr;
+        table.dataSource = self;
+        table.delegate = self;
         
-        
-        NSString * launchPath = @"/bin/rm";
-        NSArray *arguments = [NSArray arrayWithObjects:
-                              @"-R",
-                              @"crunch",
-                              nil];
-        NSString * launchPath2 = @"/Users/cpuser/Documents/adt-bundle-mac-x86_64-20140702/sdk/tools/android";
-        
-        arguments2 = [NSArray arrayWithObjects:
+        for(i=1;i<arr.count;i++){
+            
+            originalString = arr[i];
+            
+            NSString * decrunch = [NSString stringWithFormat:@"%@/bin/res",originalString];
+            
+            
+            NSString * launchPath = @"/bin/rm";
+            NSArray *arguments = [NSArray arrayWithObjects:
+                                  @"-R",
+                                  @"crunch",
+                                  nil];
+            NSString * launchPath2 = @"~/adt-bundle-mac-x86_64-20140702/sdk/tools/android";
+            
+            arguments2 = [NSArray arrayWithObjects:
                           @"update",
                           @"lib-project",
                           @"-p",
                           originalString,
                           nil];
-        
-    
-        
-        
-        NSString* output1=runCommand2(decrunch, launchPath,arguments);
-        NSString* output2=runCommand2(originalString, launchPath2,arguments2);
-        NSLog(@"%@\n%@\n",output1,output2);
-        
-        NSString *string = [NSString stringWithFormat:@"%@\n",contents];
-        [tv_Lib setString:string];
-        [tf_Lib setStringValue:@""];
+            
+            
+            
+            
+            NSString* output1=runCommand2(decrunch, launchPath,arguments);
+            NSString* output2=runCommand2(originalString, launchPath2,arguments2);
+            NSLog(@"%@\n%@\n",output1,output2);
+            
+            NSString *string = [NSString stringWithFormat:@"%@\n",contents];
+            [tv_Lib setString:string];
+            [tf_Lib setStringValue:@""];
+        }
+    }else{
+        [tv_Lib setString:@"No Record!"];
     }
 }
 

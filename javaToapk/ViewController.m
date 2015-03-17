@@ -120,7 +120,7 @@
                                     nil];
     
     if (![[NSFileManager defaultManager] fileExistsAtPath:fileAtPath]) {
-        [[NSFileManager defaultManager] createFileAtPath:fileAtPath contents:@"Location Path:\n" attributes:nil];
+        [[NSFileManager defaultManager] createFileAtPath:fileAtPath contents:@"Location Record:\n" attributes:nil];
     }
     NSString *contents = [NSString stringWithContentsOfFile:fileAtPath];
     arr = [contents componentsSeparatedByCharactersInSet:
@@ -166,7 +166,12 @@
         [lb_warning setStringValue:@"Please enter a path!"];
     }
     
+    arr = [fileAtPath componentsSeparatedByCharactersInSet:
+           [NSCharacterSet characterSetWithCharactersInString:@"\n"]];
     
+    _dataSource = arr;
+    table.dataSource = self;
+    table.delegate = self;
    
 }
 

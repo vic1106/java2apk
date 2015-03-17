@@ -11,6 +11,12 @@
 		1C3121421A9C73E600582B83 /* libchilkatCocoaDyn.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C3121401A9C73D600582B83 /* libchilkatCocoaDyn.dylib */; };
 		D89060501A80720200B810BF /* ViewController_Lib.m in Sources */ = {isa = PBXBuildFile; fileRef = D890604F1A80720200B810BF /* ViewController_Lib.m */; };
 		D8C713991A81D91000D5FF55 /* ViewController_uploadApk.m in Sources */ = {isa = PBXBuildFile; fileRef = D8C713971A81D91000D5FF55 /* ViewController_uploadApk.m */; };
+		D8CDDB8C1AA98FAA00650B26 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8CDDB8B1AA98FAA00650B26 /* Cocoa.framework */; };
+		D8CDDB8E1AA98FBC00650B26 /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8CDDB8D1AA98FBC00650B26 /* ScriptingBridge.framework */; };
+		D8CDDB961AA991B800650B26 /* SendMail.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CDDB951AA991B800650B26 /* SendMail.m */; };
+		D8CDDB981AA9950700650B26 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8CDDB971AA9950700650B26 /* AppKit.framework */; };
+		D8CDDB9A1AA9951000650B26 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8CDDB991AA9951000650B26 /* CoreData.framework */; };
+		D8CDDB9C1AA9951A00650B26 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8CDDB9B1AA9951A00650B26 /* Foundation.framework */; };
 		D8D4EE4A1A787A2800E3E7B5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D8D4EE491A787A2800E3E7B5 /* AppDelegate.m */; };
 		D8D4EE4C1A787A2800E3E7B5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D8D4EE4B1A787A2800E3E7B5 /* main.m */; };
 		D8D4EE4F1A787A2800E3E7B5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8D4EE4E1A787A2800E3E7B5 /* ViewController.m */; };
@@ -48,6 +54,14 @@
 		D890604F1A80720200B810BF /* ViewController_Lib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController_Lib.m; sourceTree = "<group>"; };
 		D8C713961A81D91000D5FF55 /* ViewController_uploadApk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController_uploadApk.h; sourceTree = "<group>"; };
 		D8C713971A81D91000D5FF55 /* ViewController_uploadApk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController_uploadApk.m; sourceTree = "<group>"; };
+		D8CDDB8B1AA98FAA00650B26 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		D8CDDB8D1AA98FBC00650B26 /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = System/Library/Frameworks/ScriptingBridge.framework; sourceTree = SDKROOT; };
+		D8CDDB941AA991B800650B26 /* SendMail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendMail.h; sourceTree = "<group>"; };
+		D8CDDB951AA991B800650B26 /* SendMail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendMail.m; sourceTree = "<group>"; };
+		D8CDDB971AA9950700650B26 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		D8CDDB991AA9951000650B26 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		D8CDDB9B1AA9951A00650B26 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D8CDDB9D1AA99B7A00650B26 /* Mail.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Mail.h; path = ../Mail.h; sourceTree = "<group>"; };
 		D8CE35131A8350EA009B6E2F /* CkoAtom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CkoAtom.h; sourceTree = "<group>"; };
 		D8CE35141A8350EA009B6E2F /* CkoBaseProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CkoBaseProgress.h; sourceTree = "<group>"; };
 		D8CE35151A8350EA009B6E2F /* CkoBounce.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CkoBounce.h; sourceTree = "<group>"; };
@@ -138,6 +152,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8CDDB9C1AA9951A00650B26 /* Foundation.framework in Frameworks */,
+				D8CDDB9A1AA9951000650B26 /* CoreData.framework in Frameworks */,
+				D8CDDB981AA9950700650B26 /* AppKit.framework in Frameworks */,
+				D8CDDB8E1AA98FBC00650B26 /* ScriptingBridge.framework in Frameworks */,
+				D8CDDB8C1AA98FAA00650B26 /* Cocoa.framework in Frameworks */,
 				1C3121421A9C73E600582B83 /* libchilkatCocoaDyn.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -233,6 +252,11 @@
 		D8D4EE3A1A787A2800E3E7B5 = {
 			isa = PBXGroup;
 			children = (
+				D8CDDB9B1AA9951A00650B26 /* Foundation.framework */,
+				D8CDDB991AA9951000650B26 /* CoreData.framework */,
+				D8CDDB971AA9950700650B26 /* AppKit.framework */,
+				D8CDDB8D1AA98FBC00650B26 /* ScriptingBridge.framework */,
+				D8CDDB8B1AA98FAA00650B26 /* Cocoa.framework */,
 				1C3121401A9C73D600582B83 /* libchilkatCocoaDyn.dylib */,
 				D8CE35121A8350EA009B6E2F /* include */,
 				D8D4EE451A787A2800E3E7B5 /* javaToapk */,
@@ -253,15 +277,18 @@
 		D8D4EE451A787A2800E3E7B5 /* javaToapk */ = {
 			isa = PBXGroup;
 			children = (
+				D8CDDB9D1AA99B7A00650B26 /* Mail.h */,
+				D8CDDB941AA991B800650B26 /* SendMail.h */,
+				D8CDDB951AA991B800650B26 /* SendMail.m */,
 				D890604E1A80720200B810BF /* ViewController_Lib.h */,
 				D890604F1A80720200B810BF /* ViewController_Lib.m */,
 				D8D4EE481A787A2800E3E7B5 /* AppDelegate.h */,
 				D8D4EE491A787A2800E3E7B5 /* AppDelegate.m */,
-				D8D4EE461A787A2800E3E7B5 /* Supporting Files */,
 				D8D4EE4D1A787A2800E3E7B5 /* ViewController.h */,
 				D8D4EE4E1A787A2800E3E7B5 /* ViewController.m */,
 				D8C713961A81D91000D5FF55 /* ViewController_uploadApk.h */,
 				D8C713971A81D91000D5FF55 /* ViewController_uploadApk.m */,
+				D8D4EE461A787A2800E3E7B5 /* Supporting Files */,
 				D8D4EE501A787A2800E3E7B5 /* Images.xcassets */,
 				D8D4EE521A787A2800E3E7B5 /* Main.storyboard */,
 			);
@@ -396,6 +423,7 @@
 			files = (
 				D89060501A80720200B810BF /* ViewController_Lib.m in Sources */,
 				D8D4EE4F1A787A2800E3E7B5 /* ViewController.m in Sources */,
+				D8CDDB961AA991B800650B26 /* SendMail.m in Sources */,
 				D8D4EE4C1A787A2800E3E7B5 /* main.m in Sources */,
 				D8D4EE4A1A787A2800E3E7B5 /* AppDelegate.m in Sources */,
 				D8C713991A81D91000D5FF55 /* ViewController_uploadApk.m in Sources */,

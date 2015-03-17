@@ -28,6 +28,7 @@
     IBOutlet NSTableView *table;
     NSArray *_dataSource;
     NSArray *arr;
+    NSString* contents2;
     
 }
 - (IBAction)btn_upload:(id)sender;

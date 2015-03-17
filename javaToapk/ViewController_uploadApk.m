@@ -19,7 +19,8 @@
     [super viewDidLoad];
     self.title=@"Upload Server";
     [tf_Port setStringValue:@"22"];
-    [tf_FTP setStringValue:@"/var/www/download.cherrypicks.com/"];
+    [tf_FTP setStringValue:@"download.cherrypicks.com"];
+//    [tf_apkName setStringValue:@"/var/www/download.cherrypicks.com"];
     // Do view setup here.
 }
 
@@ -118,9 +119,8 @@
     //  Upload from the local file to the SSH server.
     //  Important -- the remote filepath is the 1st argument,
     //  the local filepath is the 2nd argument;
-    NSString *remoteFilePath = apkName;
+    NSString *remoteFilePath = [NSString stringWithFormat:@"/var/www/%@/%@",host,apkName];
     NSString *localFilePath = path;
-    
     success = [sftp UploadFileByName: remoteFilePath localFilePath: localFilePath];
     if (success != YES) {
         NSLog(@"%@",sftp.LastErrorText);
@@ -128,8 +128,19 @@
         return;
     }
     
+    
     NSLog(@"%@",@"Success.");
     [tv_detail setString:@"Success."];
+        NSString* filePath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+        NSString* fileName = @"uploadRecord_j2a.txt";
+        NSString* fileAtPath = [filePath stringByAppendingPathComponent:fileName];
+        
+        if (![[NSFileManager defaultManager] fileExistsAtPath:fileAtPath]) {
+            [[NSFileManager defaultManager] createFileAtPath:fileAtPath contents:@"Upload Record:\n" attributes:nil];
+        }
+        contents2 = [NSString stringWithContentsOfFile:fileAtPath];
+            contents2 = [contents2 stringByAppendingString:[NSString stringWithFormat:@"%@/%@\n",host,apkName]];
+            [contents2 writeToFile:fileAtPath atomically:YES encoding:NSUTF8StringEncoding error:nil];
 
     }
 }

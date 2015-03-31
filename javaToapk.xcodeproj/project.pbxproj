@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		1C3121411A9C73D600582B83 /* libchilkatCocoaDyn.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1C3121401A9C73D600582B83 /* libchilkatCocoaDyn.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		1C3121421A9C73E600582B83 /* libchilkatCocoaDyn.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C3121401A9C73D600582B83 /* libchilkatCocoaDyn.dylib */; };
+		D81659581ABC260600EC9BB4 /* android_ant_path.txt in Resources */ = {isa = PBXBuildFile; fileRef = D81659571ABC260600EC9BB4 /* android_ant_path.txt */; };
+		D816595B1ABC276F00EC9BB4 /* locationPath.txt in Resources */ = {isa = PBXBuildFile; fileRef = D81659591ABC276F00EC9BB4 /* locationPath.txt */; };
+		D816595C1ABC276F00EC9BB4 /* libRecord_j2a.txt in Resources */ = {isa = PBXBuildFile; fileRef = D816595A1ABC276F00EC9BB4 /* libRecord_j2a.txt */; };
+		D816595E1ABC278A00EC9BB4 /* uploadRecord_j2a.txt in Resources */ = {isa = PBXBuildFile; fileRef = D816595D1ABC278A00EC9BB4 /* uploadRecord_j2a.txt */; };
+		D86D63411AC160250095D726 /* dateAndtime.txt in Resources */ = {isa = PBXBuildFile; fileRef = D86D63401AC160250095D726 /* dateAndtime.txt */; };
 		D89060501A80720200B810BF /* ViewController_Lib.m in Sources */ = {isa = PBXBuildFile; fileRef = D890604F1A80720200B810BF /* ViewController_Lib.m */; };
 		D8C713991A81D91000D5FF55 /* ViewController_uploadApk.m in Sources */ = {isa = PBXBuildFile; fileRef = D8C713971A81D91000D5FF55 /* ViewController_uploadApk.m */; };
 		D8CDDB8C1AA98FAA00650B26 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8CDDB8B1AA98FAA00650B26 /* Cocoa.framework */; };
@@ -17,6 +22,7 @@
 		D8CDDB981AA9950700650B26 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8CDDB971AA9950700650B26 /* AppKit.framework */; };
 		D8CDDB9A1AA9951000650B26 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8CDDB991AA9951000650B26 /* CoreData.framework */; };
 		D8CDDB9C1AA9951A00650B26 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8CDDB9B1AA9951A00650B26 /* Foundation.framework */; };
+		D8CF29E51AC109870051B466 /* View_Option.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CF29E31AC109870051B466 /* View_Option.m */; };
 		D8D4EE4A1A787A2800E3E7B5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D8D4EE491A787A2800E3E7B5 /* AppDelegate.m */; };
 		D8D4EE4C1A787A2800E3E7B5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D8D4EE4B1A787A2800E3E7B5 /* main.m */; };
 		D8D4EE4F1A787A2800E3E7B5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8D4EE4E1A787A2800E3E7B5 /* ViewController.m */; };
@@ -50,6 +56,11 @@
 
 /* Begin PBXFileReference section */
 		1C3121401A9C73D600582B83 /* libchilkatCocoaDyn.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libchilkatCocoaDyn.dylib; sourceTree = "<group>"; };
+		D81659571ABC260600EC9BB4 /* android_ant_path.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = android_ant_path.txt; sourceTree = "<group>"; };
+		D81659591ABC276F00EC9BB4 /* locationPath.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = locationPath.txt; sourceTree = "<group>"; };
+		D816595A1ABC276F00EC9BB4 /* libRecord_j2a.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = libRecord_j2a.txt; sourceTree = "<group>"; };
+		D816595D1ABC278A00EC9BB4 /* uploadRecord_j2a.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = uploadRecord_j2a.txt; sourceTree = "<group>"; };
+		D86D63401AC160250095D726 /* dateAndtime.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dateAndtime.txt; sourceTree = "<group>"; };
 		D890604E1A80720200B810BF /* ViewController_Lib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController_Lib.h; sourceTree = "<group>"; };
 		D890604F1A80720200B810BF /* ViewController_Lib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController_Lib.m; sourceTree = "<group>"; };
 		D8C713961A81D91000D5FF55 /* ViewController_uploadApk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController_uploadApk.h; sourceTree = "<group>"; };
@@ -133,6 +144,8 @@
 		D8CE35571A8350EA009B6E2F /* CkoZipCrc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CkoZipCrc.h; sourceTree = "<group>"; };
 		D8CE35581A8350EA009B6E2F /* CkoZipEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CkoZipEntry.h; sourceTree = "<group>"; };
 		D8CE35591A8350EA009B6E2F /* CkoZipProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CkoZipProgress.h; sourceTree = "<group>"; };
+		D8CF29E21AC109870051B466 /* View_Option.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = View_Option.h; sourceTree = "<group>"; };
+		D8CF29E31AC109870051B466 /* View_Option.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = View_Option.m; sourceTree = "<group>"; };
 		D8D4EE431A787A2800E3E7B5 /* javaToapk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = javaToapk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8D4EE471A787A2800E3E7B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D8D4EE481A787A2800E3E7B5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -246,7 +259,8 @@
 				D8CE35581A8350EA009B6E2F /* CkoZipEntry.h */,
 				D8CE35591A8350EA009B6E2F /* CkoZipProgress.h */,
 			);
-			path = include;
+			name = include;
+			path = ../include;
 			sourceTree = "<group>";
 		};
 		D8D4EE3A1A787A2800E3E7B5 = {
@@ -258,7 +272,6 @@
 				D8CDDB8D1AA98FBC00650B26 /* ScriptingBridge.framework */,
 				D8CDDB8B1AA98FAA00650B26 /* Cocoa.framework */,
 				1C3121401A9C73D600582B83 /* libchilkatCocoaDyn.dylib */,
-				D8CE35121A8350EA009B6E2F /* include */,
 				D8D4EE451A787A2800E3E7B5 /* javaToapk */,
 				D8D4EE5C1A787A2800E3E7B5 /* javaToapkTests */,
 				D8D4EE441A787A2800E3E7B5 /* Products */,
@@ -277,7 +290,7 @@
 		D8D4EE451A787A2800E3E7B5 /* javaToapk */ = {
 			isa = PBXGroup;
 			children = (
-				D8CDDB9D1AA99B7A00650B26 /* Mail.h */,
+				D8CE35121A8350EA009B6E2F /* include */,
 				D8CDDB941AA991B800650B26 /* SendMail.h */,
 				D8CDDB951AA991B800650B26 /* SendMail.m */,
 				D890604E1A80720200B810BF /* ViewController_Lib.h */,
@@ -288,6 +301,8 @@
 				D8D4EE4E1A787A2800E3E7B5 /* ViewController.m */,
 				D8C713961A81D91000D5FF55 /* ViewController_uploadApk.h */,
 				D8C713971A81D91000D5FF55 /* ViewController_uploadApk.m */,
+				D8CF29E21AC109870051B466 /* View_Option.h */,
+				D8CF29E31AC109870051B466 /* View_Option.m */,
 				D8D4EE461A787A2800E3E7B5 /* Supporting Files */,
 				D8D4EE501A787A2800E3E7B5 /* Images.xcassets */,
 				D8D4EE521A787A2800E3E7B5 /* Main.storyboard */,
@@ -298,6 +313,12 @@
 		D8D4EE461A787A2800E3E7B5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D86D63401AC160250095D726 /* dateAndtime.txt */,
+				D816595D1ABC278A00EC9BB4 /* uploadRecord_j2a.txt */,
+				D81659591ABC276F00EC9BB4 /* locationPath.txt */,
+				D816595A1ABC276F00EC9BB4 /* libRecord_j2a.txt */,
+				D81659571ABC260600EC9BB4 /* android_ant_path.txt */,
+				D8CDDB9D1AA99B7A00650B26 /* Mail.h */,
 				D8D4EE471A787A2800E3E7B5 /* Info.plist */,
 				D8D4EE4B1A787A2800E3E7B5 /* main.m */,
 			);
@@ -402,7 +423,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D816595E1ABC278A00EC9BB4 /* uploadRecord_j2a.txt in Resources */,
+				D816595C1ABC276F00EC9BB4 /* libRecord_j2a.txt in Resources */,
+				D816595B1ABC276F00EC9BB4 /* locationPath.txt in Resources */,
+				D81659581ABC260600EC9BB4 /* android_ant_path.txt in Resources */,
 				D8D4EE511A787A2800E3E7B5 /* Images.xcassets in Resources */,
+				D86D63411AC160250095D726 /* dateAndtime.txt in Resources */,
 				D8D4EE541A787A2800E3E7B5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -425,6 +451,7 @@
 				D8D4EE4F1A787A2800E3E7B5 /* ViewController.m in Sources */,
 				D8CDDB961AA991B800650B26 /* SendMail.m in Sources */,
 				D8D4EE4C1A787A2800E3E7B5 /* main.m in Sources */,
+				D8CF29E51AC109870051B466 /* View_Option.m in Sources */,
 				D8D4EE4A1A787A2800E3E7B5 /* AppDelegate.m in Sources */,
 				D8C713991A81D91000D5FF55 /* ViewController_uploadApk.m in Sources */,
 			);

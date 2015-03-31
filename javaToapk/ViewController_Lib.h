@@ -26,6 +26,9 @@
     NSArray *_dataSource;
     NSArray *arr;
     
+     NSArray *arr_option;
+    NSString *androidPath;
+    NSString* antPath;
 }
 - (IBAction)btn_Lib:(id)sender;
 - (IBAction)btn_Chk:(id)sender;

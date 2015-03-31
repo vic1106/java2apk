@@ -16,16 +16,22 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    NSString *path_option = [[NSBundle mainBundle] pathForResource:@"android_ant_path" ofType:@"txt"];
+    
+    NSString *contents_option = [NSString stringWithContentsOfFile:path_option];
+    arr_option = [contents_option componentsSeparatedByCharactersInSet:
+                  [NSCharacterSet characterSetWithCharactersInString:@"\n"]];
+    androidPath=[NSString stringWithFormat:@"%@",arr_option[0]];
+    antPath=[NSString stringWithFormat:@"%@",arr_option[1]];
+    
     self.title=@"Update Library";
-    NSString *target_list = [NSString stringWithFormat:@"Target list : \n%@\n%@\n%@\n%@\n%@\n%@\n%@\n",
-                             @"1- Android 4.1.2, API level: 16",
-                             @"2- Android 4.4.2, API level: 19",
-                             @"3- Android 4.4W, API level: 20",
-                             @"4- Google APIs, Android 4.1.2, API level: 16",
-                             @"5- Glass Development Kit Preview, Android 4.4.2, API level: 19",
-                             @"6- Google APIs, Android 4.4.2, API level: 19",
-                             @"7- Google APIs (x86 System Image), Android 4.4.2, API level: 19"
-                             ];
+    NSString * launchPath =androidPath;
+    NSArray *arguments = [NSArray arrayWithObjects:
+                          @"list",
+                          @"targets",
+                          nil];
+    NSString *target_list = runCommand2(nil, launchPath, arguments);
     [tv_detail setString:target_list];
     
 }
@@ -40,11 +46,13 @@
     
     NSString *libLocation =[tf_Lib stringValue];
     
-    NSString* filePath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    NSString* fileName = @"libRecord_j2a.txt";
-    NSString* fileAtPath = [filePath stringByAppendingPathComponent:fileName];
+//    NSString* filePath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+//    NSString* fileName = @"libRecord_j2a.txt";
+//    NSString* fileAtPath = [filePath stringByAppendingPathComponent:fileName];
     
-    NSString *contents = [NSString stringWithContentsOfFile:fileAtPath];
+     NSString *path = [[NSBundle mainBundle] pathForResource:@"libRecord_j2a" ofType:@"txt"];
+    
+    NSString *contents = [NSString stringWithContentsOfFile:path];
     arr = [contents componentsSeparatedByCharactersInSet:
                     [NSCharacterSet characterSetWithCharactersInString:@"\n"]];
     
@@ -53,7 +61,7 @@
     if(![libLocation isEqualTo:@""]){
         
         contents = @"";
-        [contents writeToFile:fileAtPath atomically:YES encoding:NSUTF8StringEncoding error:nil ];
+        [contents writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:nil ];
 
         for(i=0;i<arr.count;i++){
             
@@ -64,10 +72,10 @@
             if(![originalString isEqualToString: libLocation]){
                 if(i==0){
                     contents = [contents stringByAppendingString:[NSString stringWithFormat:@"%@",originalString]];
-                    [contents writeToFile:fileAtPath atomically:YES encoding:NSUTF8StringEncoding error:nil];
+                    [contents writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:nil];
                 }else{
                     contents = [contents stringByAppendingString:[NSString stringWithFormat:@"\n%@",originalString]];
-                    [contents writeToFile:fileAtPath atomically:YES encoding:NSUTF8StringEncoding error:nil];
+                    [contents writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:nil];
                 }
             }else{
                 d=i;
@@ -92,7 +100,7 @@
                 
                 if(![originalString isEqualToString: libLocation]){
                     contents = [contents stringByAppendingString:[NSString stringWithFormat:@"\n%@",originalString]];
-                    [contents writeToFile:fileAtPath atomically:YES encoding:NSUTF8StringEncoding error:nil];
+                    [contents writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:nil];
 //                    NSString *string = [NSString stringWithFormat:@"%@\n",contents];
 //                    [tv_Record setString:string];
                     [tf_Lib setStringValue:@""];
@@ -126,7 +134,7 @@
                           @"-R",
                           @"crunch",
                           nil];
-    NSString * launchPath2 = @"~/adt-bundle-mac-x86_64-20140702/sdk/tools/android";
+    NSString * launchPath2 = androidPath;
     if([target isEqualToString:@""]){
         arguments2 = [NSArray arrayWithObjects:
                       @"update",
@@ -145,14 +153,16 @@
                       nil];
     }
     
-    NSString* filePath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    NSString* fileName = @"libRecord_j2a.txt";
-    NSString* fileAtPath = [filePath stringByAppendingPathComponent:fileName];
+//    NSString* filePath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+//    NSString* fileName = @"libRecord_j2a.txt";
+//    NSString* path = [filePath stringByAppendingPathComponent:fileName];
     
-    if (![[NSFileManager defaultManager] fileExistsAtPath:fileAtPath]) {
-        [[NSFileManager defaultManager] createFileAtPath:fileAtPath contents:@"Library Record:\n" attributes:nil];
+     NSString *path = [[NSBundle mainBundle] pathForResource:@"libRecord_j2a" ofType:@"txt"];
+    
+    if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
+        [[NSFileManager defaultManager] createFileAtPath:path contents:@"Library Record:\n" attributes:nil];
     }
-    NSString *contents = [NSString stringWithContentsOfFile:fileAtPath];
+    NSString *contents = [NSString stringWithContentsOfFile:path];
     arr = [contents componentsSeparatedByCharactersInSet:
                     [NSCharacterSet characterSetWithCharactersInString:@"\n"]];
     
@@ -179,7 +189,7 @@
         if(d==arr.count-1){
             
                 contents = [contents stringByAppendingString:[NSString stringWithFormat:@"%@\n",libLocation]];
-                [contents writeToFile:fileAtPath atomically:YES encoding:NSUTF8StringEncoding error:nil];
+                [contents writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:nil];
             
             
             NSString* output1=runCommand2(decrunch, launchPath,arguments);
@@ -270,11 +280,13 @@
 
 
 - (void) awakeFromNib {
-    NSString* filePath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    NSString* fileName = @"libRecord_j2a.txt";
-    NSString* fileAtPath = [filePath stringByAppendingPathComponent:fileName];
-    
-    NSString *contents= [NSString stringWithContentsOfFile:fileAtPath];
+//    NSString* filePath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+//    NSString* fileName = @"libRecord_j2a.txt";
+//    NSString* fileAtPath = [filePath stringByAppendingPathComponent:fileName];
+
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"libRecord_j2a" ofType:@"txt"];
+
+    NSString *contents= [NSString stringWithContentsOfFile:path];
     arr = [contents componentsSeparatedByCharactersInSet:
            [NSCharacterSet characterSetWithCharactersInString:@"\n"]];
     
@@ -348,4 +360,5 @@ NSString *runCommand2(NSString * currentDirectoryPath,
     
     return output;
 }
+
 @end

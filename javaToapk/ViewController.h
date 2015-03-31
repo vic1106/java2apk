@@ -12,6 +12,9 @@
     
     int i;
     int d;
+    int k;
+    int p;
+    int s;
     NSString *originalString;
     NSArray *arguments2;
     
@@ -25,11 +28,28 @@
     NSArray *arr;
     IBOutlet NSTextField *lb_warning;
     IBOutlet NSTextField *tf_Name;
+    NSArray* arr_option;
+    NSString*androidPath;
+    NSString*antPath;
+    NSString*updateType;
+    NSString*contents_keyPath;
+    IBOutlet NSTextField *apkRl_path;
+    IBOutlet NSTextField *apkRl_name;
     
+    NSString* keyPath;
+    NSString* keyName;
+    NSString* keypw1;
+    NSString* keypw2;
+    
+    NSString * currentDirectoryPath4;
+    NSString * launchPath4;
+    NSArray *arguments4;
 }
 - (IBAction)btn1:(id)sender;
 @property (strong) IBOutlet NSPathControl *locationPath;
 - (IBAction)lcPath:(id)sender;
+- (IBAction)btn_release:(id)sender;
+- (IBAction)btn_sign:(id)sender;
 
 
 

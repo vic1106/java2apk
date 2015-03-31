@@ -25,15 +25,24 @@
     IBOutlet NSTextField *lb_port;
 //    BRRequestUpload *uploadData;  // Black Raccoon's upload object
 //    NSData *uploadData;
-    IBOutlet NSTableView *table;
+    NSString*recordPath;
     NSArray *_dataSource;
     NSArray *arr;
+    NSArray *arr2;
+    NSArray *arr3;
+    NSArray *arr_time;
     NSString* contents2;
+    NSString* originalString;
+    NSString* remotePath;
+    int i;
+    int d;
     
 }
 - (IBAction)btn_upload:(id)sender;
 - (IBAction)btn_download:(id)sender;
 @property (strong) IBOutlet NSPathControl *locationPath;
 - (IBAction)lcPath:(id)sender;
+- (IBAction)createTable:(id)sender;
+
 
 @end

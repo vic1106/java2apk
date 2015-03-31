@@ -1,0 +1,2 @@
+~/adt-bundle-mac-x86_64-20140702/sdk/tools/android
+~/apache-ant-1.9.4/bin/ant

@@ -9,11 +9,6 @@
 /* Begin PBXBuildFile section */
 		1C3121411A9C73D600582B83 /* libchilkatCocoaDyn.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1C3121401A9C73D600582B83 /* libchilkatCocoaDyn.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		1C3121421A9C73E600582B83 /* libchilkatCocoaDyn.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C3121401A9C73D600582B83 /* libchilkatCocoaDyn.dylib */; };
-		D81659581ABC260600EC9BB4 /* android_ant_path.txt in Resources */ = {isa = PBXBuildFile; fileRef = D81659571ABC260600EC9BB4 /* android_ant_path.txt */; };
-		D816595B1ABC276F00EC9BB4 /* locationPath.txt in Resources */ = {isa = PBXBuildFile; fileRef = D81659591ABC276F00EC9BB4 /* locationPath.txt */; };
-		D816595C1ABC276F00EC9BB4 /* libRecord_j2a.txt in Resources */ = {isa = PBXBuildFile; fileRef = D816595A1ABC276F00EC9BB4 /* libRecord_j2a.txt */; };
-		D816595E1ABC278A00EC9BB4 /* uploadRecord_j2a.txt in Resources */ = {isa = PBXBuildFile; fileRef = D816595D1ABC278A00EC9BB4 /* uploadRecord_j2a.txt */; };
-		D86D63411AC160250095D726 /* dateAndtime.txt in Resources */ = {isa = PBXBuildFile; fileRef = D86D63401AC160250095D726 /* dateAndtime.txt */; };
 		D89060501A80720200B810BF /* ViewController_Lib.m in Sources */ = {isa = PBXBuildFile; fileRef = D890604F1A80720200B810BF /* ViewController_Lib.m */; };
 		D8C713991A81D91000D5FF55 /* ViewController_uploadApk.m in Sources */ = {isa = PBXBuildFile; fileRef = D8C713971A81D91000D5FF55 /* ViewController_uploadApk.m */; };
 		D8CDDB8C1AA98FAA00650B26 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8CDDB8B1AA98FAA00650B26 /* Cocoa.framework */; };
@@ -29,6 +24,12 @@
 		D8D4EE511A787A2800E3E7B5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8D4EE501A787A2800E3E7B5 /* Images.xcassets */; };
 		D8D4EE541A787A2800E3E7B5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8D4EE521A787A2800E3E7B5 /* Main.storyboard */; };
 		D8D4EE601A787A2900E3E7B5 /* javaToapkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D8D4EE5F1A787A2900E3E7B5 /* javaToapkTests.m */; };
+		D8DC8CEA1ACBE60E00C51921 /* android_ant_path.txt in Resources */ = {isa = PBXBuildFile; fileRef = D8DC8CE51ACBE60E00C51921 /* android_ant_path.txt */; };
+		D8DC8CEB1ACBE60E00C51921 /* dateAndtime.txt in Resources */ = {isa = PBXBuildFile; fileRef = D8DC8CE61ACBE60E00C51921 /* dateAndtime.txt */; };
+		D8DC8CEC1ACBE60E00C51921 /* libRecord_j2a.txt in Resources */ = {isa = PBXBuildFile; fileRef = D8DC8CE71ACBE60E00C51921 /* libRecord_j2a.txt */; };
+		D8DC8CED1ACBE60E00C51921 /* locationPath.txt in Resources */ = {isa = PBXBuildFile; fileRef = D8DC8CE81ACBE60E00C51921 /* locationPath.txt */; };
+		D8DC8CEE1ACBE60E00C51921 /* uploadRecord_j2a.txt in Resources */ = {isa = PBXBuildFile; fileRef = D8DC8CE91ACBE60E00C51921 /* uploadRecord_j2a.txt */; };
+		E7F26EEBA79F8D8E53617F14 /* libPods-javaToapk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8807EFA544DA14CC7BA2190E /* libPods-javaToapk.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,11 +57,8 @@
 
 /* Begin PBXFileReference section */
 		1C3121401A9C73D600582B83 /* libchilkatCocoaDyn.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libchilkatCocoaDyn.dylib; sourceTree = "<group>"; };
-		D81659571ABC260600EC9BB4 /* android_ant_path.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = android_ant_path.txt; sourceTree = "<group>"; };
-		D81659591ABC276F00EC9BB4 /* locationPath.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = locationPath.txt; sourceTree = "<group>"; };
-		D816595A1ABC276F00EC9BB4 /* libRecord_j2a.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = libRecord_j2a.txt; sourceTree = "<group>"; };
-		D816595D1ABC278A00EC9BB4 /* uploadRecord_j2a.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = uploadRecord_j2a.txt; sourceTree = "<group>"; };
-		D86D63401AC160250095D726 /* dateAndtime.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dateAndtime.txt; sourceTree = "<group>"; };
+		655E6065FD41FA45A534FDA7 /* Pods-javaToapk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-javaToapk.release.xcconfig"; path = "Pods/Target Support Files/Pods-javaToapk/Pods-javaToapk.release.xcconfig"; sourceTree = "<group>"; };
+		8807EFA544DA14CC7BA2190E /* libPods-javaToapk.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-javaToapk.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D890604E1A80720200B810BF /* ViewController_Lib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController_Lib.h; sourceTree = "<group>"; };
 		D890604F1A80720200B810BF /* ViewController_Lib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController_Lib.m; sourceTree = "<group>"; };
 		D8C713961A81D91000D5FF55 /* ViewController_uploadApk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController_uploadApk.h; sourceTree = "<group>"; };
@@ -158,6 +156,12 @@
 		D8D4EE591A787A2800E3E7B5 /* javaToapkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = javaToapkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8D4EE5E1A787A2900E3E7B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D8D4EE5F1A787A2900E3E7B5 /* javaToapkTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = javaToapkTests.m; sourceTree = "<group>"; };
+		D8DC8CE51ACBE60E00C51921 /* android_ant_path.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = android_ant_path.txt; sourceTree = "<group>"; };
+		D8DC8CE61ACBE60E00C51921 /* dateAndtime.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dateAndtime.txt; sourceTree = "<group>"; };
+		D8DC8CE71ACBE60E00C51921 /* libRecord_j2a.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = libRecord_j2a.txt; sourceTree = "<group>"; };
+		D8DC8CE81ACBE60E00C51921 /* locationPath.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = locationPath.txt; sourceTree = "<group>"; };
+		D8DC8CE91ACBE60E00C51921 /* uploadRecord_j2a.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = uploadRecord_j2a.txt; sourceTree = "<group>"; };
+		E19D0A227FC0C2069E0FE7C4 /* Pods-javaToapk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-javaToapk.debug.xcconfig"; path = "Pods/Target Support Files/Pods-javaToapk/Pods-javaToapk.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +175,7 @@
 				D8CDDB8E1AA98FBC00650B26 /* ScriptingBridge.framework in Frameworks */,
 				D8CDDB8C1AA98FAA00650B26 /* Cocoa.framework in Frameworks */,
 				1C3121421A9C73E600582B83 /* libchilkatCocoaDyn.dylib in Frameworks */,
+				E7F26EEBA79F8D8E53617F14 /* libPods-javaToapk.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,6 +189,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5F2A3EAA0804D53A07AE41F3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E19D0A227FC0C2069E0FE7C4 /* Pods-javaToapk.debug.xcconfig */,
+				655E6065FD41FA45A534FDA7 /* Pods-javaToapk.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		D8CE35121A8350EA009B6E2F /* include */ = {
 			isa = PBXGroup;
 			children = (
@@ -275,6 +289,8 @@
 				D8D4EE451A787A2800E3E7B5 /* javaToapk */,
 				D8D4EE5C1A787A2800E3E7B5 /* javaToapkTests */,
 				D8D4EE441A787A2800E3E7B5 /* Products */,
+				5F2A3EAA0804D53A07AE41F3 /* Pods */,
+				F86513BFA0CB762CEF1C602F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -313,11 +329,11 @@
 		D8D4EE461A787A2800E3E7B5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				D86D63401AC160250095D726 /* dateAndtime.txt */,
-				D816595D1ABC278A00EC9BB4 /* uploadRecord_j2a.txt */,
-				D81659591ABC276F00EC9BB4 /* locationPath.txt */,
-				D816595A1ABC276F00EC9BB4 /* libRecord_j2a.txt */,
-				D81659571ABC260600EC9BB4 /* android_ant_path.txt */,
+				D8DC8CE51ACBE60E00C51921 /* android_ant_path.txt */,
+				D8DC8CE61ACBE60E00C51921 /* dateAndtime.txt */,
+				D8DC8CE71ACBE60E00C51921 /* libRecord_j2a.txt */,
+				D8DC8CE81ACBE60E00C51921 /* locationPath.txt */,
+				D8DC8CE91ACBE60E00C51921 /* uploadRecord_j2a.txt */,
 				D8CDDB9D1AA99B7A00650B26 /* Mail.h */,
 				D8D4EE471A787A2800E3E7B5 /* Info.plist */,
 				D8D4EE4B1A787A2800E3E7B5 /* main.m */,
@@ -342,6 +358,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		F86513BFA0CB762CEF1C602F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8807EFA544DA14CC7BA2190E /* libPods-javaToapk.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -349,10 +373,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D8D4EE631A787A2900E3E7B5 /* Build configuration list for PBXNativeTarget "javaToapk" */;
 			buildPhases = (
+				8930590F2AB30B8BFE69D71F /* Check Pods Manifest.lock */,
 				D8D4EE3F1A787A2800E3E7B5 /* Sources */,
 				D8D4EE401A787A2800E3E7B5 /* Frameworks */,
 				D8D4EE411A787A2800E3E7B5 /* Resources */,
 				1C31213F1A9C73C000582B83 /* CopyFiles */,
+				16A788F0AF30E2728B1B6E18 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -423,13 +449,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D816595E1ABC278A00EC9BB4 /* uploadRecord_j2a.txt in Resources */,
-				D816595C1ABC276F00EC9BB4 /* libRecord_j2a.txt in Resources */,
-				D816595B1ABC276F00EC9BB4 /* locationPath.txt in Resources */,
-				D81659581ABC260600EC9BB4 /* android_ant_path.txt in Resources */,
+				D8DC8CEC1ACBE60E00C51921 /* libRecord_j2a.txt in Resources */,
+				D8DC8CEA1ACBE60E00C51921 /* android_ant_path.txt in Resources */,
+				D8DC8CEB1ACBE60E00C51921 /* dateAndtime.txt in Resources */,
 				D8D4EE511A787A2800E3E7B5 /* Images.xcassets in Resources */,
-				D86D63411AC160250095D726 /* dateAndtime.txt in Resources */,
+				D8DC8CED1ACBE60E00C51921 /* locationPath.txt in Resources */,
 				D8D4EE541A787A2800E3E7B5 /* Main.storyboard in Resources */,
+				D8DC8CEE1ACBE60E00C51921 /* uploadRecord_j2a.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -441,6 +467,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		16A788F0AF30E2728B1B6E18 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-javaToapk/Pods-javaToapk-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8930590F2AB30B8BFE69D71F /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D8D4EE3F1A787A2800E3E7B5 /* Sources */ = {
@@ -565,6 +624,7 @@
 		};
 		D8D4EE641A787A2900E3E7B5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E19D0A227FC0C2069E0FE7C4 /* Pods-javaToapk.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -581,6 +641,7 @@
 		};
 		D8D4EE651A787A2900E3E7B5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 655E6065FD41FA45A534FDA7 /* Pods-javaToapk.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;

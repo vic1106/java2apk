@@ -26,7 +26,7 @@ NSComboBoxDelegate, NSComboBoxDataSource>{
     NSArray* arr2;
     IBOutlet NSPathControl *locaFile;
     int i;
-    
+    int portNum;
     IBOutlet NSTextField *warning_To;
     IBOutlet NSTextField *warning_From;
     IBOutlet NSTextField *warning_Subject;
@@ -38,11 +38,15 @@ NSComboBoxDelegate, NSComboBoxDataSource>{
     IBOutlet NSTextField *warning_Message;
     IBOutlet NSTextField *lb_DateAndTime;
     
+    IBOutlet NSTextField *tf_password;
+    IBOutlet NSTextField *tf_port;
+    IBOutlet NSTextField *hostName;
 }
 - (IBAction)selectLocaFile:(id)sender;
 
 - (IBAction)sendEmailMessage:(id)sender;
 //- (IBAction)chooseFileAttachment:(id)sender;
 - (IBAction)creatLetter:(id)sender;
+- (IBAction)bt_createQR:(id)sender;
 
 @end

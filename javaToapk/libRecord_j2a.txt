@@ -1,1 +1,5 @@
 Library Record:
+/Users/cpuser/ws/SherlockLibrary_forMultiImgChooser_MTRMobile
+/Users/cpuser/ws/MultiImageChooser_MTRMobile
+/Users/cpuser/ws/facebook
+/Users/cpuser/ws/drag-sort-listview

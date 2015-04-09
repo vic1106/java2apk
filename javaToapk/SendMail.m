@@ -8,6 +8,8 @@
 #import <CoreServices/CoreServices.h>
 #import "SendMail.h"
 #import "Mail.h"
+#import <MailCore/MailCore.h>
+#import <ZXingObjC/ZXingObjC.h>
 
 @interface SendMail (delegate) <SBApplicationDelegate>
 
@@ -18,6 +20,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title=@"Send Email";
+    [tf_port setIntValue:465];
+    portNum=[tf_port intValue];
     [warning_To setStringValue:@""];
     [warning_From setStringValue:@""];
     [warning_Subject setStringValue:@""];
@@ -95,8 +99,20 @@
     NSString*warningFrom=[fromField stringValue];
     NSString*warningSubject=[fromField stringValue];
     NSString*warningMessage=[messageContent string];
-
     
+    portNum=[tf_port intValue];
+
+    NSString* senderName = [sender_Name stringValue];
+    NSString* senderpassword = [tf_password stringValue];
+    NSString* fromMailBox = [fromField stringValue];
+    NSString* toMailBox = [toField stringValue];
+    NSString* receiverName = [receiver_Name stringValue];
+    NSString* subject = [subjectField stringValue];
+    NSString* fileAttachment = [fileAttachmentField stringValue];
+    NSString* message = [messageContent string];
+//    NSString* host1 = [hostName stringValue];
+    NSString* host2 = @"smtp.gmail.com";
+    NSString* fromAddress = [NSString stringWithFormat:@"%@",fromMailBox];
     
     if([warningTo isEqualToString:@""]){
         [warning_To setStringValue:@"!!"];
@@ -123,81 +139,44 @@
 
     if(![warningTo isEqualToString:@""]&&![warningFrom isEqualToString:@""]&&![warningSubject isEqualToString:@""]&&![warningMessage isEqualToString:@""]){
         
+        MCOSMTPSession *smtpSession = [[MCOSMTPSession alloc] init];
+        smtpSession.hostname = host2;
+        smtpSession.port = portNum;
+        smtpSession.username = fromAddress;
+        smtpSession.password = senderpassword;
+        smtpSession.authType = MCOAuthTypeSASLPlain;
+        smtpSession.connectionType = MCOConnectionTypeTLS;
         
-    
-    /* create a Scripting Bridge object for talking to the Mail application */
-    MailApplication *mail = [SBApplication applicationWithBundleIdentifier:@"com.apple.Mail"];
-    
-    /* set ourself as the delegate to receive any errors */
-    mail.delegate = self;
-    
-    /* create a new outgoing message object */
-    MailOutgoingMessage *emailMessage = [[[mail classForScriptingClass:@"outgoing message"] alloc] initWithProperties:
-                                         [NSDictionary dictionaryWithObjectsAndKeys:
-                                          [subjectField stringValue], @"subject",
-                                          [[messageContent textStorage] string], @"content",
-                                          nil]];
-				
-    /* add the object to the mail app  */
-    [[mail outgoingMessages] addObject: emailMessage];
-    
-    /* set the sender, show the message */
-    emailMessage.sender = [fromField stringValue];
-    emailMessage.visible = YES;
-    
-    /* Test for errors */
-    if ( [mail lastError] != nil )
-        return;
-				
-    /* create a new recipient and add it to the recipients list */
-    MailToRecipient *theRecipient = [[[mail classForScriptingClass:@"to recipient"] alloc] initWithProperties:
-                                     [NSDictionary dictionaryWithObjectsAndKeys:
-                                      [toField stringValue], @"address",
-                                      nil]];
-    [emailMessage.toRecipients addObject: theRecipient];
-//    [theRecipient release];
-    
-    /* Test for errors */
-    if ( [mail lastError] != nil )
-        return;
-    
-    /* add an attachment, if one was specified */
-    NSString *attachmentFilePath = [fileAttachmentField stringValue];
-    if ( [attachmentFilePath length] > 0 ) {
-        MailAttachment *theAttachment;
+//        MCOIMAPSession *session = [[MCOIMAPSession alloc] init];
+//        [session setHostname:@"imap.gmail.com"];
+//        [session setPort:993];
+//        [session setUsername:@"siumankung@gmail.com"];
+//        [session setPassword:@"Rj@600860"];
+//        [session setConnectionType:MCOConnectionTypeTLS];
         
-        /* In Snow Leopard, the fileName property requires an NSString representing the path to the
-         * attachment.  In Lion, the property has been changed to require an NSURL.   */
-        SInt32 osxMinorVersion;
-        Gestalt(gestaltSystemVersionMinor, &osxMinorVersion);
+        MCOMessageBuilder *builder = [[MCOMessageBuilder alloc] init];
+        MCOAddress *from = [MCOAddress addressWithDisplayName:senderName
+                                                      mailbox:fromMailBox];
+        MCOAddress *to = [MCOAddress addressWithDisplayName:receiverName
+                                                    mailbox:toMailBox];
+        [[builder header] setFrom:from];
+        [[builder header] setTo:@[to]];
+        [[builder header] setSubject:subject];
+        NSString *attachmentPath=fileAttachment;
+        MCOAttachment *attachment = [MCOAttachment attachmentWithContentsOfFile:attachmentPath];
+        [builder addAttachment:attachment];
+        [builder setHTMLBody: message];
+        NSData * rfc822Data = [builder data];
         
-        /* create an attachment object */
-        if ( osxMinorVersion >= 7 )
-            theAttachment = [[[mail classForScriptingClass:@"attachment"] alloc] initWithProperties:
-                             [NSDictionary dictionaryWithObjectsAndKeys:
-                              [NSURL URLWithString:attachmentFilePath], @"fileName",
-                              nil]];
-        else
-        /* The string we read from the text field is a URL so we must create an NSURL instance with it
-         * and retrieve the old style file path from the NSURL instance. */
-            theAttachment = [[[mail classForScriptingClass:@"attachment"] alloc] initWithProperties:
-                             [NSDictionary dictionaryWithObjectsAndKeys:
-                              [[NSURL URLWithString:attachmentFilePath] path], @"fileName",
-                              nil]];
-        
-        /* add it to the list of attachments */
-        [[emailMessage.content attachments] addObject: theAttachment];
-        
-//        [theAttachment release];
-        
-        /* Test for errors */
-        if ( [mail lastError] != nil )
-            return;
-    }
-    /* send the message */
-    [emailMessage send];
-    
-//    [emailMessage release];
+        MCOSMTPSendOperation *sendOperation =
+        [smtpSession sendOperationWithData:rfc822Data];
+        [sendOperation start:^(NSError *error) {
+            if(error) {
+                NSLog(@"Error sending email: %@", error);
+            } else {
+                NSLog(@"Successfully sent email!");
+            }
+        }];
     }
 }
 
@@ -267,6 +246,8 @@
         [warning_URL setStringValue:@""];
     }
     
+    
+    
     if(![warningReceiver isEqualToString:@""]&&![warningSender isEqualToString:@""]&&![warningURL isEqualToString:@""]){
         
     NSString*cbBox=@"";
@@ -274,17 +255,47 @@
         cbBox=@"";
     }else{
         cbBox=[comboBox stringValue];
+        NSError *error = nil;
+        ZXMultiFormatWriter *writer = [ZXMultiFormatWriter writer];
+        ZXBitMatrix* result = [writer encode:cbBox
+                                      format:kBarcodeFormatQRCode
+                                       width:500
+                                      height:500
+                                       error:&error];
+        if (result) {
+            CGImageRef image = [[ZXImage imageWithMatrix:result] cgimage];
+            NSString* fileName = [file_Name stringValue];
+            NSString* filePath = [NSString stringWithFormat:@"/Users/cpuser/Desktop/%@.png",fileName];
+            [fileAttachmentField setStringValue:filePath];
+                                  
+                //        NSImage* a = [self imageFromCGImageRef:image];
+                //        [qrImage setImage:a];
+                                  
+                NSURL *fileURL = [NSURL fileURLWithPath:filePath];
+                CGImageDestinationRef dr = CGImageDestinationCreateWithURL((__bridge CFURLRef)fileURL, kUTTypePNG , 1, NULL);
+                                  
+                CGImageDestinationAddImage(dr, image, NULL);
+                CGImageDestinationFinalize(dr);
+                                  
+                CFRelease(dr);
+                // This CGImageRef image can be placed in a UIImage, NSImage, or written to a file.
+                } else {
+                    NSString *errorMessage = [error localizedDescription];
+                }
     }
     
-    NSString* letterContent=[NSString stringWithFormat:@"Dear %@,\n\n\n\n\nThis is %@ file.\n\n\nURL\n%@\n\nQR Code URL :\nhttp://chart.apis.google.com/chart?chs=200x200&cht=qr&chld=|1&chl=%@\n\n\n\n\nRegard,\n%@",
+    NSString* letterContent=[NSString stringWithFormat:@"Dear %@,\n\n\n\n\nThis is %@ file.\n\n\n\n\nRegard,\n%@",
                              [receiver_Name stringValue],
                              [file_Name stringValue],
-                             cbBox,
-                             cbBox,
                              [sender_Name stringValue]
                              ];
     [messageContent setString:letterContent];
     }
+    
+}
+
+- (IBAction)bt_createQR:(id)sender {
+    
     
 }
 

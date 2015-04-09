@@ -1,1 +1,5 @@
 Local Record:
+/Users/cpuser/Desktop/lab2
+/Users/cpuser/ws/MTR-Mobile
+/Users/cpuser/Desktop/ws/MTR-Mobile
+/Users/cpuser/Desktop/EIE4216_mini-project_2.9 2/mini

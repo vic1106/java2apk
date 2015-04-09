@@ -1,0 +1,1 @@
+PODS_JAVATOAPK_ZXINGOBJC_OTHER_LDFLAGS = -ObjC -framework "AVFoundation" -framework "CoreMedia" -framework "QuartzCore"

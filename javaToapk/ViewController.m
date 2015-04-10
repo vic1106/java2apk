@@ -184,7 +184,7 @@
             }else{
                 NSString *string = @"Added already!";
                 [lb_warning setStringValue:string];
-                [tf1 setStringValue:@""];
+//                [tf1 setStringValue:@""];
                 break;
             }
         }
@@ -490,7 +490,7 @@
         }else{
             NSString *string = @"Added already!";
             [lb_warning setStringValue:string];
-            [tf1 setStringValue:@""];
+//            [tf1 setStringValue:@""];
             break;
         }
     }

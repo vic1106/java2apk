@@ -24,6 +24,7 @@
     NSString* keyName;
     NSString* keypw1;
     NSString* keypw2;
+    NSString* qrPath;
     IBOutlet NSTextField *path_server;
     
     NSString *path;
@@ -32,6 +33,7 @@
     IBOutlet NSTextField *keyAlias;
     IBOutlet NSTextField *keyStore_pw;
     IBOutlet NSTextField *keyAlias_pw;
+    IBOutlet NSTextField *path_QR;
 }
 - (IBAction)bt_save:(id)sender;
 

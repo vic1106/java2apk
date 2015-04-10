@@ -18,6 +18,12 @@
 @implementation SendMail
 
 - (void)viewDidLoad {
+    NSString *path_option = [[NSBundle mainBundle] pathForResource:@"android_ant_path" ofType:@"txt"];
+    
+    NSString *contents_option = [NSString stringWithContentsOfFile:path_option];
+    arr_option = [contents_option componentsSeparatedByCharactersInSet:
+                  [NSCharacterSet characterSetWithCharactersInString:@"\n"]];
+    qrPath= [NSString stringWithFormat:@"%@",arr_option[7]];
     [super viewDidLoad];
     self.title=@"Send Email";
     [tf_port setIntValue:465];
@@ -265,7 +271,7 @@
         if (result) {
             CGImageRef image = [[ZXImage imageWithMatrix:result] cgimage];
             NSString* fileName = [file_Name stringValue];
-            NSString* filePath = [NSString stringWithFormat:@"/Users/cpuser/Desktop/%@.png",fileName];
+            NSString* filePath = [NSString stringWithFormat:@"%@/%@.png",qrPath,fileName];
             [fileAttachmentField setStringValue:filePath];
                                   
                 //        NSImage* a = [self imageFromCGImageRef:image];
@@ -284,11 +290,7 @@
                 }
     }
     
-    NSString* letterContent=[NSString stringWithFormat:@"Dear %@,\n\n\n\n\nThis is %@ file.\n\n\n\n\nRegard,\n%@",
-                             [receiver_Name stringValue],
-                             [file_Name stringValue],
-                             [sender_Name stringValue]
-                             ];
+    NSString* letterContent=[NSString stringWithFormat:@"This is %@ file.",[file_Name stringValue]];
     [messageContent setString:letterContent];
     }
     

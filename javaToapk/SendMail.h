@@ -24,6 +24,9 @@ NSComboBoxDelegate, NSComboBoxDataSource>{
     IBOutlet NSTextField *file_Name;
     NSArray* arr;
     NSArray* arr2;
+    NSArray* arr_option;
+    NSString* qrPath;
+    
     IBOutlet NSPathControl *locaFile;
     int i;
     int portNum;

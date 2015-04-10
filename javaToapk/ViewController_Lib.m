@@ -87,7 +87,7 @@
                 d=i;
                 NSString *string = @"No suitable path!";
                 [tv_Lib setString:string];
-                [tf_Lib setStringValue:@""];
+//                [tf_Lib setStringValue:@""];
             }
         }
         
@@ -103,7 +103,7 @@
                     [contents writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:nil];
 //                    NSString *string = [NSString stringWithFormat:@"%@\n",contents];
 //                    [tv_Record setString:string];
-                    [tf_Lib setStringValue:@""];
+//                    [tf_Lib setStringValue:@""];
                     [lb_warning setStringValue:@""];
         }
     }
@@ -182,7 +182,7 @@
             }else{
                 NSString *string = @"Added already!";
                 [lb_warning setStringValue:string];
-                [tf_Lib setStringValue:@""];
+//                [tf_Lib setStringValue:@""];
                 break;
             }
         }
@@ -197,7 +197,7 @@
             NSLog(@"%@\n%@\n",output1,output2);
             NSString *string = [NSString stringWithFormat:@"%@\n%@\n",output1,output2];
             [tv_Lib setString:string];
-            [tf_Lib setStringValue:@""];
+//            [tf_Lib setStringValue:@""];
             [lb_warning setStringValue:@" "];
 //            NSString *string2 = [NSString stringWithFormat:@"%@\n",contents];
 //            [tv_Record setString:string2];
@@ -208,7 +208,7 @@
             NSLog(@"%@\n%@\n",output1,output2);
             NSString *string = [NSString stringWithFormat:@"%@\n%@\n",output1,output2];
             [tv_Lib setString:string];
-            [tf_Lib setStringValue:@""];
+//            [tf_Lib setStringValue:@""];
             NSString *string1 = @"Added already!";
             [lb_warning setStringValue:string1];
         }

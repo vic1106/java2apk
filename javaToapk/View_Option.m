@@ -29,6 +29,7 @@
     keyName=[NSString stringWithFormat:@"%@",arr[4]];
     keypw1=[NSString stringWithFormat:@"%@",arr[5]];
     keypw2=[NSString stringWithFormat:@"%@",arr[6]];
+    qrPath=[NSString stringWithFormat:@"%@",arr[7]];
     // Do view setup here.
     
     [path_android setStringValue:androidPath];
@@ -38,6 +39,7 @@
     [keyAlias setStringValue:keyName];
     [keyStore_pw setStringValue:keypw1];
     [keyAlias_pw setStringValue:keypw2];
+    [path_QR setStringValue:qrPath];
 
 
 }
@@ -51,11 +53,13 @@
     keyName=[keyAlias stringValue];
     keypw1=[keyStore_pw stringValue];
     keypw2=[keyAlias_pw stringValue];
+    qrPath=[path_QR stringValue];
+    
     if(![androidPath isEqualToString:@""]&&![antPath isEqualToString:@""]&&![serverPath isEqualToString:@""]){
         contents = @"";
         [contents writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:nil ];
         
-        for(i=0;i<7;i++){
+        for(i=0;i<8;i++){
             if(i==0){
                 contents = [contents stringByAppendingString:[NSString stringWithFormat:@"%@\n",androidPath]];
                 [contents writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:nil];
@@ -81,7 +85,11 @@
                 [contents writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:nil];
             }
             if (i==6){
-                contents = [contents stringByAppendingString:[NSString stringWithFormat:@"%@",keypw2]];
+                contents = [contents stringByAppendingString:[NSString stringWithFormat:@"%@\n",keypw2]];
+                [contents writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:nil];
+            }
+            if (i==7){
+                contents = [contents stringByAppendingString:[NSString stringWithFormat:@"%@",qrPath]];
                 [contents writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:nil];
             }
             [lb_okay setStringValue:@"The paths are saved."];

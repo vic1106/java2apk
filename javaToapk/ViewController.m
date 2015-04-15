@@ -87,64 +87,64 @@
                               nil];
         //android update project
         NSString * launchPath2 = androidPath;
-        if([target isEqualToString:@""]&&[name isEqualToString:@""]){
-            
-            arguments2 = [NSArray arrayWithObjects:
-                          @"update",
-                          @"project",
-                          @"-p",
-                          currentDirectoryPath,
-                          @"-t",
-                          @"6",
-                          @"-s",
-                          @"-n",
-                          @"test",
-                          nil];
-            updateType=@"update project without Name without API level";
-        }
-        if([target isEqualToString:@""]&&![name isEqualToString:@""]){
-            arguments2 = [NSArray arrayWithObjects:
-                          @"update",
-                          @"project",
-                          @"-p",
-                          currentDirectoryPath,
-                          @"-t",
-                          @"6",
-                          @"-s",
-                          @"-n",
-                          name,
-                          nil];
-            updateType=@"update project without Name with API level";
-        }
-        if(![target isEqualToString:@""]&&![name isEqualToString:@""]){
-            arguments2 = [NSArray arrayWithObjects:
-                          @"update",
-                          @"project",
-                          @"-p",
-                          currentDirectoryPath,
-                          @"-t",
-                          target,
-                          @"-s",
-                          @"-n",
-                          @"test",
-                          nil];
-            updateType=@"update project with Name without API level";
-        }
-        if(![target isEqualToString:@""]&&![name isEqualToString:@""]){
-            arguments2 = [NSArray arrayWithObjects:
-                          @"update",
-                          @"project",
-                          @"-p",
-                          currentDirectoryPath,
-                          @"-t",
-                          target,
-                          @"-s",
-                          @"-n",
-                          name,
-                          nil];
-            
-            updateType=@"update project with Name with API level";
-        }
+//        if([target isEqualToString:@""]&&[name isEqualToString:@""]){
+//            
+//            arguments2 = [NSArray arrayWithObjects:
+//                          @"update",
+//                          @"project",
+//                          @"-p",
+//                          currentDirectoryPath,
+//                          @"-t",
+//                          @"6",
+//                          @"-s",
+//                          @"-n",
+//                          @"test",
+//                          nil];
+//            updateType=@"update project without Name without API level";
+//        }
+//        if([target isEqualToString:@""]&&![name isEqualToString:@""]){
+//            arguments2 = [NSArray arrayWithObjects:
+//                          @"update",
+//                          @"project",
+//                          @"-p",
+//                          currentDirectoryPath,
+//                          @"-t",
+//                          @"6",
+//                          @"-s",
+//                          @"-n",
+//                          name,
+//                          nil];
+//            updateType=@"update project without Name with API level";
+//        }
+//        if(![target isEqualToString:@""]&&![name isEqualToString:@""]){
+//            arguments2 = [NSArray arrayWithObjects:
+//                          @"update",
+//                          @"project",
+//                          @"-p",
+//                          currentDirectoryPath,
+//                          @"-t",
+//                          target,
+//                          @"-s",
+//                          @"-n",
+//                          @"test",
+//                          nil];
+//            updateType=@"update project with Name without API level";
+//        }
+//        if(![target isEqualToString:@""]&&![name isEqualToString:@""]){
+//            arguments2 = [NSArray arrayWithObjects:
+//                          @"update",
+//                          @"project",
+//                          @"-p",
+//                          currentDirectoryPath,
+//                          @"-t",
+//                          target,
+//                          @"-s",
+//                          @"-n",
+//                          name,
+//                          nil];
+//            
+//            updateType=@"update project with Name with API level";
+//        }
         //ant release
         NSString * launchPath3 = antPath;
         NSArray *arguments3 = [NSArray arrayWithObjects:
@@ -157,14 +157,15 @@
                                   [NSString stringWithFormat:@"%@-release.apk",name],
                                   [NSString stringWithFormat:@"%@.apk",name],
                                   nil];
-        }else{
-            currentDirectoryPath4= [NSString stringWithFormat:@"%@/bin",location];
-            launchPath4 = @"/bin/mv";
-            arguments4= [NSArray arrayWithObjects:
-                                  @"test-release.apk",
-                                  @"test.apk",
-                                  nil];
         }
+//        else{
+//            currentDirectoryPath4= [NSString stringWithFormat:@"%@/bin",location];
+//            launchPath4 = @"/bin/mv";
+//            arguments4= [NSArray arrayWithObjects:
+//                                  @"test-release.apk",
+//                                  @"test.apk",
+//                                  nil];
+//        }
         
         if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
             [[NSFileManager defaultManager] createFileAtPath:path contents:@"Location Record:\n" attributes:nil];
@@ -182,8 +183,8 @@
             if(![originalString isEqualToString: location]){
                 d=i;
             }else{
-                NSString *string = @"Added already!";
-                [lb_warning setStringValue:string];
+//                NSString *string = @"";
+//                [lb_warning setStringValue:string];
 //                [tf1 setStringValue:@""];
                 break;
             }
@@ -227,6 +228,8 @@
 //    table.dataSource = self;
 //    table.delegate = self;
 //    [table reloadData];
+    NSString *string = @"";
+    [lb_warning setStringValue:string];
 }
 
 - (IBAction)btn_update:(id)sender {
@@ -259,11 +262,7 @@
                           @"project",
                           @"-p",
                           currentDirectoryPath,
-                          @"-t",
-                          @"6",
                           @"-s",
-                          @"-n",
-                          @"test",
                           nil];
             updateType=@"update project without Name without API level";
         }
@@ -273,8 +272,6 @@
                           @"project",
                           @"-p",
                           currentDirectoryPath,
-                          @"-t",
-                          @"6",
                           @"-s",
                           @"-n",
                           name,
@@ -290,8 +287,6 @@
                           @"-t",
                           target,
                           @"-s",
-                          @"-n",
-                          @"test",
                           nil];
             updateType=@"update project with Name without API level";
         }
@@ -313,7 +308,7 @@
         
         
         if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
-            [[NSFileManager defaultManager] createFileAtPath:path contents:@"Location Record:\n" attributes:nil];
+            [[NSFileManager defaultManager] createFileAtPath:path contents:@"/\n" attributes:nil];
         }
         NSString *contents = [NSString stringWithContentsOfFile:path];
         arr = [contents componentsSeparatedByCharactersInSet:
@@ -340,18 +335,14 @@
             contents = [contents stringByAppendingString:[NSString stringWithFormat:@"%@\n",currentDirectoryPath]];
             [contents writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:nil];
             
-            NSString*output1=runCommand(decrunch, launchPath,arguments);
-            NSString*output2=runCommand(nil, launchPath2,arguments2);
-            NSString*output3=runCommand(decrunch, launchPath,arguments);
-            NSLog(@"%@\n%@\n%@\n",output1,output2,output3);
-            NSString *string = [NSString stringWithFormat:@"%@\n%@\n%@\n%@\n%@\n%@\n",output1,output2,output3,updateType,name,target];
+            NSString*output1=runCommand(nil, launchPath2,arguments2);
+            NSLog(@"%@\n",output1);
+            NSString *string = [NSString stringWithFormat:@"%@\n%@\n%@\n%@\n",output1,updateType,name,target];
             [tv1 setString:string];
         }else{
-            NSString*output1=runCommand(decrunch, launchPath,arguments);
-            NSString*output2=runCommand(nil, launchPath2,arguments2);
-            NSString*output3=runCommand(decrunch, launchPath,arguments);
-            NSLog(@"%@\n%@\n%@\n",output1,output2,output3);
-            NSString *string = [NSString stringWithFormat:@"%@\n%@\n%@\n%@\n%@\n%@\n",output1,output2,output3,updateType,name,target];
+            NSString*output1=runCommand(nil, launchPath2,arguments2);
+            NSLog(@"%@\n",output1);
+            NSString *string = [NSString stringWithFormat:@"%@\n%@\n%@\n%@\n",output1,updateType,name,target];
             [tv1 setString:string];
         }
     }else{
@@ -369,15 +360,12 @@
 
 - (IBAction)btn_deleteCrunch:(id)sender {
     NSString *path = [[NSBundle mainBundle] pathForResource:@"locationPath" ofType:@"txt"];
-    NSString *target =[tf_target stringValue];
-    NSString *name =[tf_Name stringValue];
-    NSString *location=[tf1 stringValue];
+        NSString *location=[tf1 stringValue];
     
     
     if(![location isEqual: @""]){
         
         NSString * decrunch = [NSString stringWithFormat:@"%@/bin/res",location];
-        NSString * currentDirectoryPath = [NSString stringWithFormat:@"%@",location];
         
         //remove crunch
         NSString * launchPath = @"/bin/rm";
@@ -399,8 +387,8 @@
             if(![originalString isEqualToString: location]){
                 d=i;
             }else{
-                NSString *string = @"Added already!";
-                [lb_warning setStringValue:string];
+//                NSString *string = @"Added already!";
+//                [lb_warning setStringValue:string];
                 //                [tf1 setStringValue:@""];
                 break;
             }
@@ -537,8 +525,8 @@
         if(![originalString isEqualToString: location]){
             d=i;
         }else{
-            NSString *string = @"Added already!";
-            [lb_warning setStringValue:string];
+//            NSString *string = @"Added already!";
+//            [lb_warning setStringValue:string];
 //            [tf1 setStringValue:@""];
             break;
         }
@@ -572,11 +560,92 @@
 //        table.dataSource = self;
 //        table.delegate = self;
 //        [table reloadData];
-    
+    NSString *string = @"";
+    [lb_warning setStringValue:string];
    
 }
 
-
+- (IBAction)btnRemove:(id)sender{
+    
+    NSString *libLocation =[tf1 stringValue];
+    
+    //    NSString* filePath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    //    NSString* fileName = @"libRecord_j2a.txt";
+    //    NSString* fileAtPath = [filePath stringByAppendingPathComponent:fileName];
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"locationPath" ofType:@"txt"];
+    
+    NSString *contents = [NSString stringWithContentsOfFile:path];
+    arr = [contents componentsSeparatedByCharactersInSet:
+           [NSCharacterSet characterSetWithCharactersInString:@"\n"]];
+    
+    NSLog(@"%d",(int)arr.count);
+    
+    if(![libLocation isEqualTo:@""]){
+        
+        contents = @"";
+        [contents writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:nil ];
+        
+        for(i=0;i<arr.count;i++){
+            
+            originalString = arr[i];
+            
+            NSLog(@"%@ %@", libLocation, originalString);
+            
+            if(![originalString isEqualToString: libLocation]){
+                if(i==0){
+                    contents = [contents stringByAppendingString:[NSString stringWithFormat:@"%@",originalString]];
+                    [contents writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:nil];
+                }else{
+                    contents = [contents stringByAppendingString:[NSString stringWithFormat:@"\n%@",originalString]];
+                    [contents writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:nil];
+                }
+            }else{
+                d=i;
+                break;
+                
+            }
+            
+            if(i==arr.count-1&& ![originalString isEqualToString: libLocation]){
+                d=i;
+                NSString *string = @"No suitable path!";
+                [lb_warning setStringValue:string];
+                //                [tf_Lib setStringValue:@""];
+            }
+        }
+        
+        
+        for(i=d+1;i<arr.count;i++){
+            
+            originalString = arr[i];
+            
+            NSLog(@"%@ %@", libLocation, originalString);
+            
+            if(![originalString isEqualToString: libLocation]){
+                contents = [contents stringByAppendingString:[NSString stringWithFormat:@"\n%@",originalString]];
+                [contents writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:nil];
+                //                    NSString *string = [NSString stringWithFormat:@"%@\n",contents];
+                //                    [tv_Record setString:string];
+                //                    [tf_Lib setStringValue:@""];
+                [lb_warning setStringValue:@""];
+            }
+        }
+        
+    }else{
+        [lb_warning setStringValue:@"Please enter the path of library!"];
+        
+    }
+    
+    arr = [contents componentsSeparatedByCharactersInSet:
+           [NSCharacterSet characterSetWithCharactersInString:@"\n"]];
+    _dataSource = arr;
+    table.dataSource = self;
+    table.delegate = self;
+    [table reloadData];
+    NSString *string = @"";
+    [lb_warning setStringValue:string];
+    
+}
 
 - (void) awakeFromNib {
     

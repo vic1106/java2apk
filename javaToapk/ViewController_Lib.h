@@ -15,6 +15,7 @@
     NSString *originalString;
     int d;
     int i;
+    int s;
     
     IBOutlet NSTextView *tv_Lib;
     IBOutlet NSTextField *tf_Lib;
@@ -25,7 +26,7 @@
     IBOutlet NSTableView *table;
     NSArray *_dataSource;
     NSArray *arr;
-    
+    NSArray *arr2;
      NSArray *arr_option;
     NSString *androidPath;
     NSString* antPath;

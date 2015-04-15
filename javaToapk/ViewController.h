@@ -51,7 +51,7 @@
 - (IBAction)btn_release:(id)sender;
 - (IBAction)btn_update:(id)sender;
 - (IBAction)btn_deleteCrunch:(id)sender;
-
+- (IBAction)btnRemove:(id)sender;
 
 
 @end

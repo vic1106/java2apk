@@ -84,7 +84,7 @@
         for(i=0;i<arr.count;i++){
             
             originalString = arr[i];
-            
+            [arr2[i] addObject:originalString];
             NSLog(@"%@ %@", libLocation, originalString);
             
             if(![originalString isEqualToString: libLocation]){
@@ -95,6 +95,7 @@
                     contents = [contents stringByAppendingString:[NSString stringWithFormat:@"\n%@",originalString]];
                     [contents writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:nil];
                 }
+                d=i;
             }else{
                 d=i;
                 break;
@@ -117,12 +118,14 @@
                 NSLog(@"%@ %@", libLocation, originalString);
                 
                 if(![originalString isEqualToString: libLocation]){
-                    contents = [contents stringByAppendingString:[NSString stringWithFormat:@"\n%@",originalString]];
-                    [contents writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:nil];
-//                    NSString *string = [NSString stringWithFormat:@"%@\n",contents];
-//                    [tv_Record setString:string];
-//                    [tf_Lib setStringValue:@""];
-                    [lb_warning setStringValue:@""];
+                    if(i==0){
+                        contents = [contents stringByAppendingString:[NSString stringWithFormat:@"%@",originalString]];
+                        [contents writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:nil];
+                    }else{
+                        contents = [contents stringByAppendingString:[NSString stringWithFormat:@"\n%@",originalString]];
+                        [contents writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:nil];
+                    }
+                
         }
     }
         
@@ -178,7 +181,7 @@
      NSString *path = [[NSBundle mainBundle] pathForResource:@"libRecord_j2a" ofType:@"txt"];
     
     if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
-        [[NSFileManager defaultManager] createFileAtPath:path contents:@"Library Record:\n" attributes:nil];
+        [[NSFileManager defaultManager] createFileAtPath:path contents:@"/\n" attributes:nil];
     }
     NSString *contents = [NSString stringWithContentsOfFile:path];
     arr = [contents componentsSeparatedByCharactersInSet:
@@ -205,7 +208,13 @@
             }
         }
         if(d==arr.count-1){
-            
+//            if(i==0){
+//                contents = [contents stringByAppendingString:[NSString stringWithFormat:@"%@",originalString]];
+//                [contents writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:nil];
+//            }else{
+//                contents = [contents stringByAppendingString:[NSString stringWithFormat:@"\n%@",originalString]];
+//                [contents writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:nil];
+//            }
                 contents = [contents stringByAppendingString:[NSString stringWithFormat:@"%@\n",libLocation]];
                 [contents writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:nil];
             

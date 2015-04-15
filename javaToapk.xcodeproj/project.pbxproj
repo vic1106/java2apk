@@ -18,6 +18,7 @@
 		D8CDDB9A1AA9951000650B26 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8CDDB991AA9951000650B26 /* CoreData.framework */; };
 		D8CDDB9C1AA9951A00650B26 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8CDDB9B1AA9951A00650B26 /* Foundation.framework */; };
 		D8CF29E51AC109870051B466 /* View_Option.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CF29E31AC109870051B466 /* View_Option.m */; };
+		D8D0FE411ADE148800D7CC0C /* libRecord_j2a.txt in Resources */ = {isa = PBXBuildFile; fileRef = D8D0FE401ADE148800D7CC0C /* libRecord_j2a.txt */; };
 		D8D4EE4A1A787A2800E3E7B5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D8D4EE491A787A2800E3E7B5 /* AppDelegate.m */; };
 		D8D4EE4C1A787A2800E3E7B5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D8D4EE4B1A787A2800E3E7B5 /* main.m */; };
 		D8D4EE4F1A787A2800E3E7B5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8D4EE4E1A787A2800E3E7B5 /* ViewController.m */; };
@@ -26,7 +27,6 @@
 		D8D4EE601A787A2900E3E7B5 /* javaToapkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D8D4EE5F1A787A2900E3E7B5 /* javaToapkTests.m */; };
 		D8DC8CEA1ACBE60E00C51921 /* android_ant_path.txt in Resources */ = {isa = PBXBuildFile; fileRef = D8DC8CE51ACBE60E00C51921 /* android_ant_path.txt */; };
 		D8DC8CEB1ACBE60E00C51921 /* dateAndtime.txt in Resources */ = {isa = PBXBuildFile; fileRef = D8DC8CE61ACBE60E00C51921 /* dateAndtime.txt */; };
-		D8DC8CEC1ACBE60E00C51921 /* libRecord_j2a.txt in Resources */ = {isa = PBXBuildFile; fileRef = D8DC8CE71ACBE60E00C51921 /* libRecord_j2a.txt */; };
 		D8DC8CED1ACBE60E00C51921 /* locationPath.txt in Resources */ = {isa = PBXBuildFile; fileRef = D8DC8CE81ACBE60E00C51921 /* locationPath.txt */; };
 		D8DC8CEE1ACBE60E00C51921 /* uploadRecord_j2a.txt in Resources */ = {isa = PBXBuildFile; fileRef = D8DC8CE91ACBE60E00C51921 /* uploadRecord_j2a.txt */; };
 		E7F26EEBA79F8D8E53617F14 /* libPods-javaToapk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8807EFA544DA14CC7BA2190E /* libPods-javaToapk.a */; };
@@ -144,6 +144,7 @@
 		D8CE35591A8350EA009B6E2F /* CkoZipProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CkoZipProgress.h; sourceTree = "<group>"; };
 		D8CF29E21AC109870051B466 /* View_Option.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = View_Option.h; sourceTree = "<group>"; };
 		D8CF29E31AC109870051B466 /* View_Option.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = View_Option.m; sourceTree = "<group>"; };
+		D8D0FE401ADE148800D7CC0C /* libRecord_j2a.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = libRecord_j2a.txt; sourceTree = "<group>"; };
 		D8D4EE431A787A2800E3E7B5 /* javaToapk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = javaToapk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8D4EE471A787A2800E3E7B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D8D4EE481A787A2800E3E7B5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -158,7 +159,6 @@
 		D8D4EE5F1A787A2900E3E7B5 /* javaToapkTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = javaToapkTests.m; sourceTree = "<group>"; };
 		D8DC8CE51ACBE60E00C51921 /* android_ant_path.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = android_ant_path.txt; sourceTree = "<group>"; };
 		D8DC8CE61ACBE60E00C51921 /* dateAndtime.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dateAndtime.txt; sourceTree = "<group>"; };
-		D8DC8CE71ACBE60E00C51921 /* libRecord_j2a.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = libRecord_j2a.txt; sourceTree = "<group>"; };
 		D8DC8CE81ACBE60E00C51921 /* locationPath.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = locationPath.txt; sourceTree = "<group>"; };
 		D8DC8CE91ACBE60E00C51921 /* uploadRecord_j2a.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = uploadRecord_j2a.txt; sourceTree = "<group>"; };
 		E19D0A227FC0C2069E0FE7C4 /* Pods-javaToapk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-javaToapk.debug.xcconfig"; path = "Pods/Target Support Files/Pods-javaToapk/Pods-javaToapk.debug.xcconfig"; sourceTree = "<group>"; };
@@ -329,9 +329,9 @@
 		D8D4EE461A787A2800E3E7B5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D8D0FE401ADE148800D7CC0C /* libRecord_j2a.txt */,
 				D8DC8CE51ACBE60E00C51921 /* android_ant_path.txt */,
 				D8DC8CE61ACBE60E00C51921 /* dateAndtime.txt */,
-				D8DC8CE71ACBE60E00C51921 /* libRecord_j2a.txt */,
 				D8DC8CE81ACBE60E00C51921 /* locationPath.txt */,
 				D8DC8CE91ACBE60E00C51921 /* uploadRecord_j2a.txt */,
 				D8CDDB9D1AA99B7A00650B26 /* Mail.h */,
@@ -449,7 +449,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D8DC8CEC1ACBE60E00C51921 /* libRecord_j2a.txt in Resources */,
+				D8D0FE411ADE148800D7CC0C /* libRecord_j2a.txt in Resources */,
 				D8DC8CEA1ACBE60E00C51921 /* android_ant_path.txt in Resources */,
 				D8DC8CEB1ACBE60E00C51921 /* dateAndtime.txt in Resources */,
 				D8D4EE511A787A2800E3E7B5 /* Images.xcassets in Resources */,

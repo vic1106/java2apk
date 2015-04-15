@@ -102,21 +102,21 @@
                           nil];
             updateType=@"update project without Name without API level";
         }
-        if(![target isEqualToString:@""]&&[name isEqualToString:@""]){
+        if([target isEqualToString:@""]&&![name isEqualToString:@""]){
             arguments2 = [NSArray arrayWithObjects:
                           @"update",
                           @"project",
                           @"-p",
                           currentDirectoryPath,
                           @"-t",
-                          @"test",
+                          @"6",
                           @"-s",
                           @"-n",
                           name,
                           nil];
             updateType=@"update project without Name with API level";
         }
-        if([target isEqualToString:@""]&&![name isEqualToString:@""]){
+        if(![target isEqualToString:@""]&&![name isEqualToString:@""]){
             arguments2 = [NSArray arrayWithObjects:
                           @"update",
                           @"project",
@@ -190,53 +190,55 @@
         }
         
         if(d==arr.count-1){
-            
-            NSString*output1=runCommand(decrunch, launchPath,arguments);
-            NSString*output2=runCommand(nil, launchPath2,arguments2);
-            NSString*output3=runCommand( currentDirectoryPath,launchPath3,arguments3);
-            NSString*output4=runCommand( currentDirectoryPath4,launchPath4,arguments4);
-            
             contents = [contents stringByAppendingString:[NSString stringWithFormat:@"%@\n",currentDirectoryPath]];
             [contents writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:nil];
-            
-            NSLog(@"%@\n%@\n%@%@\n",output1,output2,output3,output4);
-            NSString *string = [NSString stringWithFormat:@"%@\n%@\n%@\n%@\n%@\n%@\n%@",output1,output2,output3,output4,updateType,name,target];
-            [tv1 setString:string];
-        }else{
-            NSString*output1=runCommand(decrunch, launchPath,arguments);
-            NSString*output2=runCommand(nil, launchPath2,arguments2);
+//            NSString*output1=runCommand(decrunch, launchPath,arguments);
+//            NSString*output2=runCommand(nil, launchPath2,arguments2);
             NSString*output3=runCommand( currentDirectoryPath,launchPath3,arguments3);
             NSString*output4=runCommand( currentDirectoryPath4,launchPath4,arguments4);
-            NSLog(@"%@\n%@\n%@%@\n",output1,output2,output3,output4);
-            NSString *string = [NSString stringWithFormat:@"%@\n%@\n%@\n%@\n%@\n%@\n%@",output1,output2,output3,output4,updateType,name,target];
+            
+            NSLog(@"%@\n%@\n",output3,output4);
+            NSString *string = [NSString stringWithFormat:@"%@\n%@\n",output3,output4];
+            [tv1 setString:string];
+        }else{
+//            NSString*output1=runCommand(decrunch, launchPath,arguments);
+//            NSString*output2=runCommand(nil, launchPath2,arguments2);
+            NSString*output3=runCommand( currentDirectoryPath,launchPath3,arguments3);
+            NSString*output4=runCommand( currentDirectoryPath4,launchPath4,arguments4);
+            
+            NSLog(@"%@\n%@\n",output3,output4);
+            NSString *string = [NSString stringWithFormat:@"%@\n%@\n",output3,output4];
             [tv1 setString:string];
         }
     }else{
         [lb_warning setStringValue:@"Please enter a path!"];
     }
     
-    NSString *contents = [NSString stringWithContentsOfFile:path];
-    arr = [contents componentsSeparatedByCharactersInSet:
-           [NSCharacterSet characterSetWithCharactersInString:@"\n"]];
+//    NSString *contents = [NSString stringWithContentsOfFile:path];
+//    arr = [contents componentsSeparatedByCharactersInSet:
+//           [NSCharacterSet characterSetWithCharactersInString:@"\n"]];
     
     contents_properties1 = @"";
     NSLog(@"%@",contents_properties2);
     [contents_properties1 writeToFile:path_properties atomically:YES encoding:NSUTF8StringEncoding error:nil];
     [contents_properties2 writeToFile:path_properties atomically:YES encoding:NSUTF8StringEncoding error:nil];
     
-    _dataSource = arr;
-    table.dataSource = self;
-    table.delegate = self;
-    [table reloadData];
+//    _dataSource = arr;
+//    table.dataSource = self;
+//    table.delegate = self;
+//    [table reloadData];
 }
 
-- (IBAction)btn_sign:(id)sender {
+- (IBAction)btn_update:(id)sender {
     NSString *path = [[NSBundle mainBundle] pathForResource:@"locationPath" ofType:@"txt"];
-    
     NSString *target =[tf_target stringValue];
     NSString *name =[tf_Name stringValue];
-    
     NSString *location=[tf1 stringValue];
+    //    NSArray* arr_properties = [contents_properties componentsSeparatedByCharactersInSet:
+    //           [NSCharacterSet characterSetWithCharactersInString:@"\n"]];
+    //    NSString* contents2 = @"";
+    //    [contents2 writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:nil ];
+    
     if(![location isEqual: @""]){
         
         NSString * decrunch = [NSString stringWithFormat:@"%@/bin/res",location];
@@ -251,38 +253,35 @@
         //android update project
         NSString * launchPath2 = androidPath;
         if([target isEqualToString:@""]&&[name isEqualToString:@""]){
-            target=@"6";
-            name=@"test";
+            
             arguments2 = [NSArray arrayWithObjects:
                           @"update",
                           @"project",
                           @"-p",
                           currentDirectoryPath,
                           @"-t",
-                          target,
+                          @"6",
                           @"-s",
                           @"-n",
-                          name,
+                          @"test",
                           nil];
             updateType=@"update project without Name without API level";
         }
-        if(![target isEqualToString:@""]&&[name isEqualToString:@""]){
-            name=@"test";
+        if([target isEqualToString:@""]&&![name isEqualToString:@""]){
             arguments2 = [NSArray arrayWithObjects:
                           @"update",
                           @"project",
                           @"-p",
                           currentDirectoryPath,
                           @"-t",
-                          target,
+                          @"6",
                           @"-s",
                           @"-n",
                           name,
                           nil];
             updateType=@"update project without Name with API level";
         }
-        if([target isEqualToString:@""]&&![name isEqualToString:@""]){
-            name=@"test";
+        if(![target isEqualToString:@""]&&[name isEqualToString:@""]){
             arguments2 = [NSArray arrayWithObjects:
                           @"update",
                           @"project",
@@ -292,7 +291,7 @@
                           target,
                           @"-s",
                           @"-n",
-                          name,
+                          @"test",
                           nil];
             updateType=@"update project with Name without API level";
         }
@@ -308,13 +307,10 @@
                           @"-n",
                           name,
                           nil];
+            
             updateType=@"update project with Name with API level";
         }
-        //ant release
-        NSString * launchPath3 = antPath;
-        NSArray *arguments3 = [NSArray arrayWithObjects:
-                               @"release",
-                               nil];
+        
         
         if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
             [[NSFileManager defaultManager] createFileAtPath:path contents:@"Location Record:\n" attributes:nil];
@@ -334,29 +330,28 @@
             }else{
                 NSString *string = @"Added already!";
                 [lb_warning setStringValue:string];
-                [tf1 setStringValue:@""];
+                //                [tf1 setStringValue:@""];
                 break;
             }
         }
         
         if(d==arr.count-1){
             
-            NSString*output1=runCommand(decrunch, launchPath,arguments);
-            NSString*output2=runCommand(nil, launchPath2,arguments2);
-            NSString*output3=runCommand( currentDirectoryPath,launchPath3,arguments3);
-            
             contents = [contents stringByAppendingString:[NSString stringWithFormat:@"%@\n",currentDirectoryPath]];
             [contents writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:nil];
             
-            NSLog(@"%@\n%@\n%@",output1,output2,output3);
-            NSString *string = [NSString stringWithFormat:@"%@\n%@\n%@",output1,output2,output3];
+            NSString*output1=runCommand(decrunch, launchPath,arguments);
+            NSString*output2=runCommand(nil, launchPath2,arguments2);
+            NSString*output3=runCommand(decrunch, launchPath,arguments);
+            NSLog(@"%@\n%@\n%@\n",output1,output2,output3);
+            NSString *string = [NSString stringWithFormat:@"%@\n%@\n%@\n%@\n%@\n%@\n",output1,output2,output3,updateType,name,target];
             [tv1 setString:string];
         }else{
             NSString*output1=runCommand(decrunch, launchPath,arguments);
             NSString*output2=runCommand(nil, launchPath2,arguments2);
-            NSString*output3=runCommand( currentDirectoryPath,launchPath3,arguments3);
-            NSLog(@"%@\n%@\n%@",output1,output2,output3);
-            NSString *string = [NSString stringWithFormat:@"%@\n%@\n%@\n%@\n%@\n%@",output1,output2,output3,updateType,name,target];
+            NSString*output3=runCommand(decrunch, launchPath,arguments);
+            NSLog(@"%@\n%@\n%@\n",output1,output2,output3);
+            NSString *string = [NSString stringWithFormat:@"%@\n%@\n%@\n%@\n%@\n%@\n",output1,output2,output3,updateType,name,target];
             [tv1 setString:string];
         }
     }else{
@@ -366,11 +361,65 @@
     NSString *contents = [NSString stringWithContentsOfFile:path];
     arr = [contents componentsSeparatedByCharactersInSet:
            [NSCharacterSet characterSetWithCharactersInString:@"\n"]];
-    
     _dataSource = arr;
     table.dataSource = self;
     table.delegate = self;
     [table reloadData];
+}
+
+- (IBAction)btn_deleteCrunch:(id)sender {
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"locationPath" ofType:@"txt"];
+    NSString *target =[tf_target stringValue];
+    NSString *name =[tf_Name stringValue];
+    NSString *location=[tf1 stringValue];
+    
+    
+    if(![location isEqual: @""]){
+        
+        NSString * decrunch = [NSString stringWithFormat:@"%@/bin/res",location];
+        NSString * currentDirectoryPath = [NSString stringWithFormat:@"%@",location];
+        
+        //remove crunch
+        NSString * launchPath = @"/bin/rm";
+        NSArray *arguments = [NSArray arrayWithObjects:
+                              @"-R",
+                              @"crunch",
+                              nil];
+        
+        NSString *contents = [NSString stringWithContentsOfFile:path];
+        arr = [contents componentsSeparatedByCharactersInSet:
+               [NSCharacterSet characterSetWithCharactersInString:@"\n"]];
+        
+        for(i=0;i<arr.count;i++){
+            
+            originalString = arr[i];
+            
+            NSLog(@"%@ %@", location, originalString);
+            
+            if(![originalString isEqualToString: location]){
+                d=i;
+            }else{
+                NSString *string = @"Added already!";
+                [lb_warning setStringValue:string];
+                //                [tf1 setStringValue:@""];
+                break;
+            }
+        }
+        
+        if(d==arr.count-1){
+            NSString*output1=runCommand(decrunch, launchPath,arguments);
+            NSLog(@"%@\n",output1);
+            NSString *string = [NSString stringWithFormat:@"%@\n",output1];
+            [tv1 setString:string];
+        }else{
+            NSString*output1=runCommand(decrunch, launchPath,arguments);
+            NSLog(@"%@\n",output1);
+            NSString *string = [NSString stringWithFormat:@"%@\n",output1];
+            [tv1 setString:string];
+        }
+    }else{
+        [lb_warning setStringValue:@"Please enter a path!"];
+    }
     
 }
 
@@ -496,28 +545,33 @@
     }
    
     if(d==arr.count-1){
-    
-    NSString*output1=runCommand(decrunch, launchPath,arguments);
-    NSString*output2=runCommand(nil, launchPath2,arguments2);
+        contents = [contents stringByAppendingString:[NSString stringWithFormat:@"%@\n",currentDirectoryPath]];
+        [contents writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:nil];
+//    NSString*output1=runCommand(decrunch, launchPath,arguments);
+//    NSString*output2=runCommand(nil, launchPath2,arguments2);
     NSString*output3=runCommand( currentDirectoryPath,launchPath3,arguments3);
-        
-    contents = [contents stringByAppendingString:[NSString stringWithFormat:@"%@\n",currentDirectoryPath]];
-    [contents writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:nil];
-    
-    NSLog(@"%@\n%@\n%@",output1,output2,output3);
-        NSString *string = [NSString stringWithFormat:@"%@\n%@\n%@",output1,output2,output3];
+    NSLog(@"%@\n",output3);
+        NSString *string = [NSString stringWithFormat:@"%@\n",output3];
         [tv1 setString:string];
     }else{
-        NSString*output1=runCommand(decrunch, launchPath,arguments);
-        NSString*output2=runCommand(nil, launchPath2,arguments2);
+//        NSString*output1=runCommand(decrunch, launchPath,arguments);
+//        NSString*output2=runCommand(nil, launchPath2,arguments2);
         NSString*output3=runCommand( currentDirectoryPath,launchPath3,arguments3);
-        NSLog(@"%@\n%@\n%@",output1,output2,output3);
-        NSString *string = [NSString stringWithFormat:@"%@\n%@\n%@\n%@\n%@\n%@",output1,output2,output3,updateType,name,target];
+        NSLog(@"%@\n",output3);
+        NSString *string = [NSString stringWithFormat:@"%@\n",output3];
         [tv1 setString:string];
     }
     }else{
         [lb_warning setStringValue:@"Please enter a path!"];
     }
+    
+//        NSString *contents = [NSString stringWithContentsOfFile:path];
+//        arr = [contents componentsSeparatedByCharactersInSet:
+//               [NSCharacterSet characterSetWithCharactersInString:@"\n"]];
+//        _dataSource = arr;
+//        table.dataSource = self;
+//        table.delegate = self;
+//        [table reloadData];
     
    
 }

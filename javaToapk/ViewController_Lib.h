@@ -36,6 +36,7 @@
 
 @property (strong) IBOutlet NSPathControl *locationPath;
 - (IBAction)lcPath:(id)sender;
+- (IBAction)deleteCrunch:(id)sender;
 
 
 

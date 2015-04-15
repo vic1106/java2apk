@@ -42,6 +42,24 @@
     
 }
 
+- (IBAction)deleteCrunch:(id)sender {
+    NSString *libLocation =[tf_Lib stringValue];
+    NSString * decrunch = [NSString stringWithFormat:@"%@/bin/res",libLocation];
+    
+    
+    NSString * launchPath = @"/bin/rm";
+    NSArray *arguments = [NSArray arrayWithObjects:
+                          @"-R",
+                          @"crunch",
+                          nil];
+    
+    NSString* output2=runCommand2(decrunch, launchPath,arguments);
+    NSLog(@"%@\n",output2);
+    NSString *string = [NSString stringWithFormat:@"%@\n",output2];
+    [tv_Lib setString:string];
+    [lb_warning setStringValue:@" "];
+}
+
 - (IBAction)btnRemove:(id)sender{
     
     NSString *libLocation =[tf_Lib stringValue];
@@ -141,6 +159,8 @@
                       @"lib-project",
                       @"-p",
                       libLocation,
+                      @"-t",
+                      @"6",
                       nil];
     }else{
         arguments2 = [NSArray arrayWithObjects:
@@ -153,9 +173,7 @@
                       nil];
     }
     
-//    NSString* filePath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-//    NSString* fileName = @"libRecord_j2a.txt";
-//    NSString* path = [filePath stringByAppendingPathComponent:fileName];
+    
     
      NSString *path = [[NSBundle mainBundle] pathForResource:@"libRecord_j2a" ofType:@"txt"];
     
@@ -180,8 +198,8 @@
             if(![originalString isEqualToString: libLocation]){
                 d=i;
             }else{
-                NSString *string = @"Added already!";
-                [lb_warning setStringValue:string];
+//                NSString *string = @"Added already!";
+//                [lb_warning setStringValue:@"Added already!"];
 //                [tf_Lib setStringValue:@""];
                 break;
             }
@@ -191,26 +209,18 @@
                 contents = [contents stringByAppendingString:[NSString stringWithFormat:@"%@\n",libLocation]];
                 [contents writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:nil];
             
-            
-            NSString* output1=runCommand2(decrunch, launchPath,arguments);
-            NSString* output2=runCommand2(libLocation, launchPath2,arguments2);
-            NSLog(@"%@\n%@\n",output1,output2);
-            NSString *string = [NSString stringWithFormat:@"%@\n%@\n",output1,output2];
+            NSString* output1=runCommand2(libLocation, launchPath2,arguments2);
+            NSLog(@"%@\n",output1);
+            NSString *string = [NSString stringWithFormat:@"%@\n",output1];
             [tv_Lib setString:string];
-//            [tf_Lib setStringValue:@""];
             [lb_warning setStringValue:@" "];
-//            NSString *string2 = [NSString stringWithFormat:@"%@\n",contents];
-//            [tv_Record setString:string2];
             
         }else{
-            NSString* output1=runCommand2(decrunch, launchPath,arguments);
-            NSString* output2=runCommand2(libLocation, launchPath2,arguments2);
-            NSLog(@"%@\n%@\n",output1,output2);
-            NSString *string = [NSString stringWithFormat:@"%@\n%@\n",output1,output2];
+            NSString* output1=runCommand2(libLocation, launchPath2,arguments2);
+            NSLog(@"%@\n",output1);
+            NSString *string = [NSString stringWithFormat:@"%@\n",output1];
             [tv_Lib setString:string];
-//            [tf_Lib setStringValue:@""];
-            NSString *string1 = @"Added already!";
-            [lb_warning setStringValue:string1];
+            [lb_warning setStringValue:@"Added already!"];
         }
     }else{
         [lb_warning setStringValue:@"Please enter the path of library!"];
@@ -317,9 +327,12 @@
         NSString *abc = [NSString stringWithFormat:@"%@",arr[table.selectedRow]];
         [tf_Lib setStringValue:abc];
         [tv_Lib setString:abc];
+        [lb_warning setStringValue:@" "];
     }else{
         [tf_Lib setStringValue:@""];
         [tv_Lib setString:@""];
+        [lb_warning setStringValue:@" "];
+        
     }
 }
 

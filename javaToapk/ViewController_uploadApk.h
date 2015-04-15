@@ -13,7 +13,7 @@
     IBOutlet NSTextField *tf_apkPath;
     IBOutlet NSTextField *tf_FTP;
     IBOutlet NSTextField *tf_Name;
-    IBOutlet NSTextField *tf_Password;
+    IBOutlet NSSecureTextField *tf_Password;
     IBOutlet NSTextField *tf_apkName;
     IBOutlet NSTextField *tf_Port;
     IBOutlet NSTextView *tv_detail;

@@ -41,7 +41,7 @@ NSComboBoxDelegate, NSComboBoxDataSource>{
     IBOutlet NSTextField *warning_Message;
     IBOutlet NSTextField *lb_DateAndTime;
     
-    IBOutlet NSTextField *tf_password;
+    IBOutlet NSSecureTextField *tf_password;
     IBOutlet NSTextField *tf_port;
     IBOutlet NSTextField *hostName;
 }

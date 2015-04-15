@@ -49,8 +49,8 @@
 @property (strong) IBOutlet NSPathControl *locationPath;
 - (IBAction)lcPath:(id)sender;
 - (IBAction)btn_release:(id)sender;
-- (IBAction)btn_sign:(id)sender;
-
+- (IBAction)btn_update:(id)sender;
+- (IBAction)btn_deleteCrunch:(id)sender;
 
 
 

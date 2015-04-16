@@ -36,12 +36,14 @@
     
 }
 
+//Choose the project
 - (IBAction)lcPath:(id)sender {
     NSString *projectLocation  = [NSString stringWithFormat:@"%@",self.locationPath.URL.path];
     [tf_Lib setStringValue:projectLocation];
     
 }
 
+// delete the crunch
 - (IBAction)deleteCrunch:(id)sender {
     NSString *libLocation =[tf_Lib stringValue];
     NSString * decrunch = [NSString stringWithFormat:@"%@/bin/res",libLocation];
@@ -60,6 +62,7 @@
     [lb_warning setStringValue:@" "];
 }
 
+//Remove the path in tableView
 - (IBAction)btnRemove:(id)sender{
     
     NSString *libLocation =[tf_Lib stringValue];
@@ -143,18 +146,19 @@
 
 }
 
+//Update library
 - (IBAction)btn_Lib:(id)sender {
+    
+    NSString *path_option = [[NSBundle mainBundle] pathForResource:@"android_ant_path" ofType:@"txt"];
+    
+    NSString *contents_option = [NSString stringWithContentsOfFile:path_option];
+    arr_option = [contents_option componentsSeparatedByCharactersInSet:
+                  [NSCharacterSet characterSetWithCharactersInString:@"\n"]];
+    androidPath=[NSString stringWithFormat:@"%@",arr_option[0]];
+    antPath=[NSString stringWithFormat:@"%@",arr_option[1]];
     
     NSString *libLocation =[tf_Lib stringValue];
     NSString *target =[tf_target stringValue];
-    NSString * decrunch = [NSString stringWithFormat:@"%@/bin/res",libLocation];
-    
-    
-    NSString * launchPath = @"/bin/rm";
-    NSArray *arguments = [NSArray arrayWithObjects:
-                          @"-R",
-                          @"crunch",
-                          nil];
     NSString * launchPath2 = androidPath;
     if([target isEqualToString:@""]){
         arguments2 = [NSArray arrayWithObjects:
@@ -201,20 +205,10 @@
             if(![originalString isEqualToString: libLocation]){
                 d=i;
             }else{
-//                NSString *string = @"Added already!";
-//                [lb_warning setStringValue:@"Added already!"];
-//                [tf_Lib setStringValue:@""];
                 break;
             }
         }
         if(d==arr.count-1){
-//            if(i==0){
-//                contents = [contents stringByAppendingString:[NSString stringWithFormat:@"%@",originalString]];
-//                [contents writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:nil];
-//            }else{
-//                contents = [contents stringByAppendingString:[NSString stringWithFormat:@"\n%@",originalString]];
-//                [contents writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:nil];
-//            }
                 contents = [contents stringByAppendingString:[NSString stringWithFormat:@"%@\n",libLocation]];
                 [contents writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:nil];
             
@@ -242,62 +236,7 @@
     [table reloadData];
 }
 
-- (IBAction)btn_Chk:(id)sender {
-   
-//    NSString* filePath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-//    NSString* fileName = @"libRecord_j2a.txt";
-//    NSString* fileAtPath = [filePath stringByAppendingPathComponent:fileName];
-    
-//    NSString *contents = [NSString stringWithContentsOfFile:fileAtPath];
-//    if(![contents isEqualToString:@"Library Record:\n"]){
-//        arr = [contents componentsSeparatedByCharactersInSet:
-//               [NSCharacterSet characterSetWithCharactersInString:@"\n"]];
-//        for(i=1;i<arr.count;i++){
-//            
-//            originalString = arr[i];
-//            
-//            NSString * decrunch = [NSString stringWithFormat:@"%@/bin/res",originalString];
-//            
-//            
-//            NSString * launchPath = @"/bin/rm";
-//            NSArray *arguments = [NSArray arrayWithObjects:
-//                                  @"-R",
-//                                  @"crunch",
-//                                  nil];
-//            NSString * launchPath2 = @"~/adt-bundle-mac-x86_64-20140702/sdk/tools/android";
-//            
-//            arguments2 = [NSArray arrayWithObjects:
-//                          @"update",
-//                          @"lib-project",
-//                          @"-p",
-//                          originalString,
-//                          nil];
-//            
-//            
-//            
-//            
-//            NSString* output1=runCommand2(decrunch, launchPath,arguments);
-//            NSString* output2=runCommand2(originalString, launchPath2,arguments2);
-//            NSLog(@"%@\n%@\n",output1,output2);
-//            
-//            NSString *string = [NSString stringWithFormat:@"%@\n",contents];
-//            [tv_Lib setString:string];
-//            [tf_Lib setStringValue:@""];
-//            _dataSource = arr;
-//            table.dataSource = self;
-//            table.delegate = self;
-//            [table reloadData];
-//        }
-//    }else{
-//        [tv_Lib setString:@"No Record!"];
-//        _dataSource = arr;
-//        table.dataSource = self;
-//        table.delegate = self;
-//        [table reloadData];
-//    }
-}
-
-
+//tableView
 - (void) awakeFromNib {
 //    NSString* filePath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
 //    NSString* fileName = @"libRecord_j2a.txt";
@@ -312,6 +251,7 @@
     _dataSource = arr;
     table.dataSource = self;
     table.delegate = self;
+    
     
 }
 
@@ -345,11 +285,7 @@
     }
 }
 
-
-
-
-
-
+//Run the Command
 NSString *runCommand2(NSString * currentDirectoryPath,
                      NSString * launchPath,
                      NSArray * arguments1

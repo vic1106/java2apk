@@ -37,6 +37,7 @@
     [warning_URL setStringValue:@""];
     [warning_FileName setStringValue:@""];
     [warning_Message setStringValue:@""];
+    [comboBox setStringValue:@"/"];
     // Do view setup here.
 //    NSString* filePath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
 //    NSString* fileName = @"uploadRecord_j2a.txt";
@@ -70,36 +71,7 @@
     return nil;
 }
 
-
-- (IBAction)chooseFileAttachment:(id)sender {
-//    NSOpenPanel *op = [NSOpenPanel openPanel];
-//    
-//    /* allow directories */
-//    [op setCanChooseDirectories:YES];
-//    
-//    /* single file selections */
-//    [op setAllowsMultipleSelection:NO];
-//    [op setCanChooseFiles: YES];
-//    
-//    //    [op setAllowedFileTypes:[NSArray arrayWithObjects: @"gif", @"jpg", @"pdf", @"png", @"rtf", @"txt", @"zip",@"apk", nil]];
-//    
-//    /* run the open panel */
-//    NSInteger openResult = [op runModal];
-//    
-//    /* save the selection, if a file/directory was chosen */
-//    if ( NSOKButton == openResult ) {
-//        [fileAttachmentField setStringValue: [[op URLs] objectAtIndex:0]];
-//    }
-}
-
-
-
-
-- (IBAction)selectLocaFile:(id)sender {
-    NSString *projectLocation  = [NSString stringWithFormat:@"%@",locaFile.URL.path];
-    [fileAttachmentField setStringValue:projectLocation];
-}
-
+//Send email by Gmail
 - (IBAction)sendEmailMessage:(id)sender {
     NSString*warningTo=[toField stringValue];
     NSString*warningFrom=[fromField stringValue];
@@ -116,7 +88,11 @@
     NSString* subject = [subjectField stringValue];
     NSString* fileAttachment = [fileAttachmentField stringValue];
     NSString* message = [messageContent string];
-//    NSString* host1 = [hostName stringValue];
+    if ([message containsString:@"\n"]) {
+        NSString * newString = [message stringByReplacingOccurrencesOfString:@"\n" withString:@"<br>"];
+        message=newString;
+        NSLog(@"%@xx",newString);
+    }
     NSString* host2 = @"smtp.gmail.com";
     NSString* fromAddress = [NSString stringWithFormat:@"%@",fromMailBox];
     
@@ -153,13 +129,6 @@
         smtpSession.authType = MCOAuthTypeSASLPlain;
         smtpSession.connectionType = MCOConnectionTypeTLS;
         
-//        MCOIMAPSession *session = [[MCOIMAPSession alloc] init];
-//        [session setHostname:@"imap.gmail.com"];
-//        [session setPort:993];
-//        [session setUsername:@"siumankung@gmail.com"];
-//        [session setPassword:@"Rj@600860"];
-//        [session setConnectionType:MCOConnectionTypeTLS];
-        
         MCOMessageBuilder *builder = [[MCOMessageBuilder alloc] init];
         MCOAddress *from = [MCOAddress addressWithDisplayName:senderName
                                                       mailbox:fromMailBox];
@@ -168,9 +137,11 @@
         [[builder header] setFrom:from];
         [[builder header] setTo:@[to]];
         [[builder header] setSubject:subject];
-        NSString *attachmentPath=fileAttachment;
-        MCOAttachment *attachment = [MCOAttachment attachmentWithContentsOfFile:attachmentPath];
-        [builder addAttachment:attachment];
+        if(![fileAttachment isEqualToString:@""]){
+            NSString *attachmentPath=fileAttachment;
+            MCOAttachment *attachment = [MCOAttachment attachmentWithContentsOfFile:attachmentPath];
+            [builder addAttachment:attachment];
+        }
         [builder setHTMLBody: message];
         NSData * rfc822Data = [builder data];
         
@@ -180,15 +151,16 @@
             if(error) {
                 NSLog(@"Error sending email: %@", error);
             } else {
+                [messageContent setString:@"Sucess!!"];
                 NSLog(@"Successfully sent email!");
             }
         }];
     }
 }
 
+//dropdown list
 - (void)dealloc {
-    //    [comboBoxItems release];
-    //    [super dealloc];
+    
 }
 - (NSInteger)numberOfItemsInComboBox:(NSComboBox *)aComboBox {
     
@@ -202,18 +174,7 @@
     return nil;
 }
 - (void)comboBoxSelectionDidChange:(NSNotification *)notification {
-    if(i>0){
-        NSString *path2 = [[NSBundle mainBundle] pathForResource:@"dateAndtime" ofType:@"txt"];
-        NSString *contents2= [NSString stringWithContentsOfFile:path2];
-        arr2 = [contents2 componentsSeparatedByCharactersInSet:
-                [NSCharacterSet characterSetWithCharactersInString:@"\n"]];
-        NSString*time=[NSString stringWithFormat:@"%@",arr2[i]];
-        [lb_DateAndTime setStringValue:[NSString stringWithFormat:@"Date and Time : %@",time]];
-    }else{
-        [lb_DateAndTime setStringValue:@""];
-    }
-    
-    
+
     NSLog(@"[%@ %@] value == %@", NSStringFromClass([self class]),
           NSStringFromSelector(_cmd), [comboBoxItems objectAtIndex:
                                        [(NSComboBox *)[notification object] indexOfSelectedItem]]);
@@ -228,7 +189,7 @@
     
 }
 
-
+//Create the message and QRcode
 - (IBAction)creatLetter:(id)sender {
     NSString*warningReceiver=[receiver_Name stringValue];
     NSString*warningSender=[sender_Name stringValue];
@@ -257,7 +218,7 @@
     if(![warningReceiver isEqualToString:@""]&&![warningSender isEqualToString:@""]&&![warningURL isEqualToString:@""]){
         
     NSString*cbBox=@"";
-    if([[comboBox stringValue]isEqualToString:@"Upload Record:"]){
+    if([[comboBox stringValue]isEqualToString:@"/"]){
         cbBox=@"";
     }else{
         cbBox=[comboBox stringValue];
@@ -273,10 +234,7 @@
             NSString* fileName = [file_Name stringValue];
             NSString* filePath = [NSString stringWithFormat:@"%@/%@.png",qrPath,fileName];
             [fileAttachmentField setStringValue:filePath];
-                                  
-                //        NSImage* a = [self imageFromCGImageRef:image];
-                //        [qrImage setImage:a];
-                                  
+            
                 NSURL *fileURL = [NSURL fileURLWithPath:filePath];
                 CGImageDestinationRef dr = CGImageDestinationCreateWithURL((__bridge CFURLRef)fileURL, kUTTypePNG , 1, NULL);
                                   
@@ -290,15 +248,12 @@
                 }
     }
     
-    NSString* letterContent=[NSString stringWithFormat:@"This is %@ file.",[file_Name stringValue]];
+    NSString* letterContent=[NSString stringWithFormat:@"Dear %@,\n\n\nThis is %@ file.\n\n\nRegarding,\n%@",[sender_Name stringValue],[file_Name stringValue],[receiver_Name stringValue]];
     [messageContent setString:letterContent];
     }
     
 }
 
-- (IBAction)bt_createQR:(id)sender {
-    
-    
-}
+
 
 @end

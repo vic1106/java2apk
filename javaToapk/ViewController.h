@@ -17,6 +17,7 @@
     int s;
     NSString *originalString;
     NSArray *arguments2;
+    NSString *name;
     
     IBOutlet NSTextField *tf1;
     IBOutlet NSTextField *tf_target;
@@ -52,6 +53,7 @@
 - (IBAction)btn_update:(id)sender;
 - (IBAction)btn_deleteCrunch:(id)sender;
 - (IBAction)btnRemove:(id)sender;
+- (IBAction)btnAPI:(id)sender;
 
 
 @end

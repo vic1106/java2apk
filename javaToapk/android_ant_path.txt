@@ -1,0 +1,8 @@
+~/adt-bundle-mac-x86_64-20140702/sdk/tools/android
+~/apache-ant-1.9.4/bin/ant
+download.cherrypicks.com
+/Users/cpuser/my-release-key.keystore
+mykey
+abc123
+abc123
+/Users/cpuser/Desktop

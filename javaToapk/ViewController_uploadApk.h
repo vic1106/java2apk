@@ -30,12 +30,18 @@
     NSArray *arr;
     NSArray *arr2;
     NSArray *arr3;
+    NSArray *arr4;
     NSArray *arr_time;
     NSString* contents2;
     NSString* originalString;
+    NSString* originalString2;
     NSString* remotePath;
     int i;
     int d;
+    int b;
+    
+    IBOutlet NSComboBox* comboBox;
+    NSArray* comboBoxItems;
     
 }
 - (IBAction)btn_upload:(id)sender;

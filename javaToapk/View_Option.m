@@ -44,6 +44,7 @@
 
 }
 
+//Set some control
 - (IBAction)bt_save:(id)sender {
     
     androidPath=[path_android stringValue];

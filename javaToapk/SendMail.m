@@ -18,8 +18,14 @@
 @implementation SendMail
 
 - (void)viewDidLoad {
-    NSString *path_option = [[NSBundle mainBundle] pathForResource:@"android_ant_path" ofType:@"txt"];
     
+    NSString* filePath2 = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString* fileName2 = @"android_ant_path.txt";
+    NSString* path_option = [filePath2 stringByAppendingPathComponent:fileName2];
+    if (![[NSFileManager defaultManager] fileExistsAtPath:path_option]) {
+        [[NSFileManager defaultManager] createFileAtPath:path_option contents:@"~/\n~/\nsftp.com\nkey\nkey\nkey\nkey\n~/" attributes:nil];
+    }
+
     NSString *contents_option = [NSString stringWithContentsOfFile:path_option];
     arr_option = [contents_option componentsSeparatedByCharactersInSet:
                   [NSCharacterSet characterSetWithCharactersInString:@"\n"]];
@@ -39,11 +45,13 @@
     [warning_Message setStringValue:@""];
     [comboBox setStringValue:@"/"];
     // Do view setup here.
-//    NSString* filePath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-//    NSString* fileName = @"uploadRecord_j2a.txt";
-//    NSString* fileAtPath = [filePath stringByAppendingPathComponent:fileName];
-    
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"uploadRecord_j2a" ofType:@"txt"];
+
+    NSString* filePath1 = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString* fileName1 = @"uploadRecord_j2a.txt";
+    NSString* path = [filePath1 stringByAppendingPathComponent:fileName1];
+    if (![[NSFileManager defaultManager] fileExistsAtPath:fileName1]) {
+        [[NSFileManager defaultManager] createFileAtPath:fileName1 contents:@"/\n" attributes:nil];
+    }
     
     NSString *contents= [NSString stringWithContentsOfFile:path];
     comboBoxItems = [contents componentsSeparatedByCharactersInSet:
@@ -149,9 +157,11 @@
         [smtpSession sendOperationWithData:rfc822Data];
         [sendOperation start:^(NSError *error) {
             if(error) {
+                [tv_result setString:[NSString stringWithFormat:@"Error sending email: %@", error]];
                 NSLog(@"Error sending email: %@", error);
+                
             } else {
-                [messageContent setString:@"Sucess!!"];
+                [tv_result setString:@"Successfully sent email!"];
                 NSLog(@"Successfully sent email!");
             }
         }];

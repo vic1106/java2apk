@@ -34,6 +34,7 @@
 - (IBAction)btn_Lib:(id)sender;
 - (IBAction)btn_Chk:(id)sender;
 - (IBAction)btnRemove:(id)sender;
+- (IBAction)btn_showAPI:(id)sender;
 
 @property (strong) IBOutlet NSPathControl *locationPath;
 - (IBAction)lcPath:(id)sender;

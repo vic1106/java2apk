@@ -21,7 +21,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    recordPath = [[NSBundle mainBundle] pathForResource:@"android_ant_path" ofType:@"txt"];
+    NSString* filePath2 = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString* fileName2 = @"android_ant_path.txt";
+    recordPath = [filePath2 stringByAppendingPathComponent:fileName2];
+    if (![[NSFileManager defaultManager] fileExistsAtPath:recordPath]) {
+        [[NSFileManager defaultManager] createFileAtPath:recordPath contents:@"~/\n~/\nsftp.com\nkey\nkey\nkey\nkey\n~/" attributes:nil];
+    }
+//    recordPath = [[NSBundle mainBundle] pathForResource:@"android_ant_path" ofType:@"txt"];
     
     NSString *contents = [NSString stringWithContentsOfFile:recordPath];
     arr3 = [contents componentsSeparatedByCharactersInSet:
@@ -34,7 +40,22 @@
     [tf_Port setStringValue:@"22"];
     [tf_FTP setStringValue:serverPath];
     [comboBox setStringValue:@"/"];
-    NSString *path_combo = [[NSBundle mainBundle] pathForResource:@"uploadRecord_sht" ofType:@"txt"];
+    
+    NSString* filePath3 = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString* fileName3 = @"uploadRecord_j2a.txt";
+    NSString* fileAtPath2 = [filePath3 stringByAppendingPathComponent:fileName3];
+    if (![[NSFileManager defaultManager] fileExistsAtPath:fileAtPath2]) {
+        [[NSFileManager defaultManager] createFileAtPath:fileAtPath2 contents:@"/\n" attributes:nil];
+    }
+    
+    NSString* filePath1 = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString* fileName1 = @"uploadRecord_sht.txt";
+    NSString* path_combo = [filePath1 stringByAppendingPathComponent:fileName1];
+    if (![[NSFileManager defaultManager] fileExistsAtPath:path_combo]) {
+        [[NSFileManager defaultManager] createFileAtPath:path_combo contents:@"/\n" attributes:nil];
+    }
+    
+//    NSString *path_combo = [[NSBundle mainBundle] pathForResource:@"uploadRecord_sht" ofType:@"txt"];
     
     NSString *contents_combo= [NSString stringWithContentsOfFile:path_combo];
     comboBoxItems = [contents_combo componentsSeparatedByCharactersInSet:
@@ -65,8 +86,15 @@
     NSString * name=[tf_Name stringValue];
     NSString * password=[tf_Password stringValue];
     NSString * port1=[tf_Port stringValue];
-    NSString *path2 = [[NSBundle mainBundle] pathForResource:@"uploadRecord_j2a" ofType:@"txt"];
-    NSString *path_combo = [[NSBundle mainBundle] pathForResource:@"uploadRecord_sht" ofType:@"txt"];
+    
+    NSString* filePath3 = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString* fileName3 = @"uploadRecord_j2a.txt";
+    NSString* path2 = [filePath3 stringByAppendingPathComponent:fileName3];
+    
+    
+    NSString* filePath1 = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString* fileName1 = @"uploadRecord_sht.txt";
+    NSString* path_combo = [filePath1 stringByAppendingPathComponent:fileName1];
     
     if([path isEqual: @""]){
         [lb_path setStringValue:@"Please enter LOCATION PATH!"];
@@ -106,7 +134,7 @@
     CkoSFtp *sftp = [[CkoSFtp alloc] init];
     
     //  Any string automatically begins a fully-functional 30-day trial.
-    BOOL success = [sftp UnlockComponent: @"abc"];
+    BOOL success = [sftp UnlockComponent: @"abcdefg"];
     if (success != YES) {
         NSLog(@"%@",sftp.LastErrorText);
         return;

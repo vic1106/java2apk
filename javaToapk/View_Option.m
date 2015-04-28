@@ -16,8 +16,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title=@"Setting";
     
-    path = [[NSBundle mainBundle] pathForResource:@"android_ant_path" ofType:@"txt"];
+    NSString* filePath2 = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString* fileName2 = @"android_ant_path.txt";
+    path = [filePath2 stringByAppendingPathComponent:fileName2];
+    if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
+        [[NSFileManager defaultManager] createFileAtPath:path contents:@"~/\n~/\nsftp.com\nkey\nkey\nkey\nkey\n~/" attributes:nil];
+    }
     
     NSString *contents = [NSString stringWithContentsOfFile:path];
     arr = [contents componentsSeparatedByCharactersInSet:

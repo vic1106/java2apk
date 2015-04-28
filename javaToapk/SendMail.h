@@ -44,6 +44,7 @@ NSComboBoxDelegate, NSComboBoxDataSource>{
     IBOutlet NSSecureTextField *tf_password;
     IBOutlet NSTextField *tf_port;
     IBOutlet NSTextField *hostName;
+    IBOutlet NSTextView *tv_result;
 }
 - (IBAction)selectLocaFile:(id)sender;
 

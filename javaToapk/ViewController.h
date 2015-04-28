@@ -12,12 +12,17 @@
     
     int i;
     int d;
+    int d1;
+    int d2;
     int k;
     int p;
     int s;
     NSString *originalString;
+    NSString *originalString_name;
+    NSString *originalString_tg;
     NSArray *arguments2;
     NSString *name;
+    
     
     IBOutlet NSTextField *tf1;
     IBOutlet NSTextField *tf_target;
@@ -27,6 +32,8 @@
     IBOutlet NSTableView *table;
     NSArray *_dataSource;
     NSArray *arr;
+    NSArray *arr_name;
+    NSArray *arr_target;
     IBOutlet NSTextField *lb_warning;
     IBOutlet NSTextField *tf_Name;
     NSArray* arr_option;

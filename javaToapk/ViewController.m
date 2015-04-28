@@ -15,6 +15,20 @@
     
     self.title=@"Build App";
     
+    NSString* filePath1 = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString* fileName1 = @"locationPath.txt";
+    NSString* fileAtPath1 = [filePath1 stringByAppendingPathComponent:fileName1];
+    if (![[NSFileManager defaultManager] fileExistsAtPath:fileAtPath1]) {
+        [[NSFileManager defaultManager] createFileAtPath:fileAtPath1 contents:@"/\n" attributes:nil];
+    }
+    
+    NSString* filePath2 = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString* fileName2 = @"android_ant_path.txt";
+    NSString* fileAtPath2 = [filePath2 stringByAppendingPathComponent:fileName2];
+    if (![[NSFileManager defaultManager] fileExistsAtPath:fileAtPath2]) {
+        [[NSFileManager defaultManager] createFileAtPath:fileAtPath2 contents:@"~/\n~/\nsftp.com\nkey\nkey\nkey\nkey\n~/" attributes:nil];
+    }
+    
 }
 
 - (void)setRepresentedObject:(id)representedObject {
@@ -23,7 +37,10 @@
 }
 
 - (IBAction)btnAPI:(id)sender{
-    NSString *path_option = [[NSBundle mainBundle] pathForResource:@"android_ant_path" ofType:@"txt"];
+    NSString* filePath2 = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString* fileName2 = @"android_ant_path.txt";
+    NSString* path_option = [filePath2 stringByAppendingPathComponent:fileName2];
+//    NSString *path_option = [[NSBundle mainBundle] pathForResource:@"android_ant_path" ofType:@"txt"];
     
     NSString *contents_option = [NSString stringWithContentsOfFile:path_option];
     arr_option = [contents_option componentsSeparatedByCharactersInSet:
@@ -35,7 +52,7 @@
                           @"targets",
                           nil];
     NSString *target_list = runCommand(nil, launchPath, arguments);
-    [tv_detail setString:target_list];
+    [tv1 setString:target_list];
 }
 
 - (IBAction)lcPath:(id)sender {
@@ -47,8 +64,11 @@
 
 //ant release
 - (IBAction)btn_release:(id)sender {
+    NSString* filePath2 = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString* fileName2 = @"android_ant_path.txt";
+    NSString* path_option = [filePath2 stringByAppendingPathComponent:fileName2];
     
-    NSString *path_option = [[NSBundle mainBundle] pathForResource:@"android_ant_path" ofType:@"txt"];
+//    NSString *path_option = [[NSBundle mainBundle] pathForResource:@"android_ant_path" ofType:@"txt"];
     
     NSString *contents_option = [NSString stringWithContentsOfFile:path_option];
     arr_option = [contents_option componentsSeparatedByCharactersInSet:
@@ -59,20 +79,10 @@
     keyName=[NSString stringWithFormat:@"%@",arr_option[4]];
     keypw1=[NSString stringWithFormat:@"%@",arr_option[5]];
     keypw2=[NSString stringWithFormat:@"%@",arr_option[6]];
-    name =[tf_Name stringValue];
-    
     NSString *location=[tf1 stringValue];
     NSString *path_properties = [NSString stringWithFormat:@"%@/local.properties",location];
     NSString *contents_properties1 = [NSString stringWithContentsOfFile:path_properties];
     NSString *contents_properties2 = [NSString stringWithContentsOfFile:path_properties];
-    NSLog(@"%@",contents_properties2);
-    NSString* key=[NSString stringWithFormat:@"%@\n%@\n%@\n%@\n",[NSString stringWithFormat: @"key.store=%@",keyPath],
-                                               [NSString stringWithFormat:@"key.alias=%@", keyName],
-                                               [NSString stringWithFormat:@"key.store.password=%@", keypw1],
-                                               [NSString stringWithFormat:@"key.alias.password=%@", keypw2]];
-    
-    contents_properties1 = [contents_properties1 stringByAppendingString:[NSString stringWithFormat:@"\n%@",key]];
-    [contents_properties1 writeToFile:path_properties atomically:YES encoding:NSUTF8StringEncoding error:nil];
     
     if(![location isEqual: @""]){
         
@@ -81,43 +91,36 @@
         NSArray *arguments3 = [NSArray arrayWithObjects:
                                @"release",
                                nil];
-        
-            NSString*output3=runCommand( currentDirectoryPath,launchPath3,arguments3);
         if(![keyPath isEqualToString:@""]&&![keyName isEqualToString:@""]&&![keypw1 isEqualToString:@""]&&![keypw2 isEqualToString:@""]){
-             NSString*output4=runCommand( currentDirectoryPath4,launchPath4,arguments4);
-            NSLog(@"%@\n%@\n",output3,output4);
-            NSString *string = [NSString stringWithFormat:@"%@\n%@\n",output3,output4];
-            [tv1 setString:string];
-        }else{
-            NSLog(@"%@\n",output3);
-            NSString *string = [NSString stringWithFormat:@"%@\n",output3];
-            [tv1 setString:string];
+            NSLog(@"%@",contents_properties1);
+            NSString* key=[NSString stringWithFormat:@"\n%@\n%@\n%@\n%@\n",[NSString stringWithFormat: @"key.store=%@",keyPath],
+                           [NSString stringWithFormat:@"key.alias=%@", keyName],
+                           [NSString stringWithFormat:@"key.store.password=%@", keypw1],
+                           [NSString stringWithFormat:@"key.alias.password=%@", keypw2]];
+            
+            contents_properties1 = [contents_properties1 stringByAppendingString:[NSString stringWithFormat:@"\n%@",key]];
+            [contents_properties1 writeToFile:path_properties atomically:YES encoding:NSUTF8StringEncoding error:nil];
+            
         }
+        if (![[NSFileManager defaultManager] fileExistsAtPath:location]) {
+            [tv1 setString:@"This path isn't exist!!"];
+        }else{
+            NSString*output3=runCommand( currentDirectoryPath,launchPath3,arguments3);
+            NSLog(@"%@",output3);
+            [tv1 setString:output3];
+        }
+        
+            NSString *contents_properties3 = @"";
+            NSLog(@"%@",contents_properties2);
+            [contents_properties3 writeToFile:path_properties atomically:YES encoding:NSUTF8StringEncoding error:nil];
+            [contents_properties2 writeToFile:path_properties atomically:YES encoding:NSUTF8StringEncoding error:nil];
+        NSLog(@"%@",contents_properties2);
+        
+        
     }else{
         [lb_warning setStringValue:@"Please enter a path!"];
     }
     
-    contents_properties1 = @"";
-    NSLog(@"%@",contents_properties2);
-    [contents_properties1 writeToFile:path_properties atomically:YES encoding:NSUTF8StringEncoding error:nil];
-    [contents_properties2 writeToFile:path_properties atomically:YES encoding:NSUTF8StringEncoding error:nil];
-    
-    if(![name isEqualToString:@""]){
-        currentDirectoryPath4= [NSString stringWithFormat:@"%@/bin",location];
-        launchPath4 = @"/bin/mv";
-        arguments4= [NSArray arrayWithObjects:
-                     [NSString stringWithFormat:@"%@-release.apk",name],
-                     [NSString stringWithFormat:@"%@.apk",name],
-                     nil];
-    }else{
-        currentDirectoryPath4= [NSString stringWithFormat:@"%@/bin",location];
-        launchPath4 = @"/bin/mv";
-        arguments4= [NSArray arrayWithObjects:
-                     @"test-release.apk",
-                     @"test.apk",
-                     nil];
-    }
-
     
     NSString *string = @"";
     [lb_warning setStringValue:string];
@@ -125,7 +128,10 @@
 
 //android update
 - (IBAction)btn_update:(id)sender {
-    NSString *path_option = [[NSBundle mainBundle] pathForResource:@"android_ant_path" ofType:@"txt"];
+    NSString* filePath2 = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString* fileName2 = @"android_ant_path.txt";
+    NSString* path_option = [filePath2 stringByAppendingPathComponent:fileName2];
+//    NSString *path_option = [[NSBundle mainBundle] pathForResource:@"android_ant_path" ofType:@"txt"];
     
     NSString *contents_option = [NSString stringWithContentsOfFile:path_option];
     arr_option = [contents_option componentsSeparatedByCharactersInSet:
@@ -133,9 +139,13 @@
     androidPath=[NSString stringWithFormat:@"%@",arr_option[0]];
     name =[tf_Name stringValue];
     
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"locationPath" ofType:@"txt"];
+    NSString* filePath1 = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString* fileName1 = @"locationPath.txt";
+    NSString* path = [filePath1 stringByAppendingPathComponent:fileName1];
+    
     NSString *target =[tf_target stringValue];
     NSString *location=[tf1 stringValue];
+    
    
     if(![location isEqual: @""]){
         
@@ -198,9 +208,7 @@
         }
         
         
-//        if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
-//            [[NSFileManager defaultManager] createFileAtPath:path contents:@"/\n" attributes:nil];
-//        }
+
         NSString *contents = [NSString stringWithContentsOfFile:path];
         arr = [contents componentsSeparatedByCharactersInSet:
                [NSCharacterSet characterSetWithCharactersInString:@"\n"]];
@@ -219,23 +227,36 @@
                 //                [tf1 setStringValue:@""];
                 break;
             }
+            
+            
         }
+        
         
         if(d==arr.count-1){
             
-            contents = [contents stringByAppendingString:[NSString stringWithFormat:@"%@\n",currentDirectoryPath]];
-            [contents writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:nil];
+            if (![[NSFileManager defaultManager] fileExistsAtPath:location]) {
+                
+                [tv1 setString:@"This path isn't exist!!"];
+            }else{
+                NSString*output1=runCommand(nil, launchPath2,arguments2);
+                NSLog(@"%@\n",output1);
+                NSString *string = [NSString stringWithFormat:@"%@\n",output1];
+                [tv1 setString:string];
+                contents = [contents stringByAppendingString:[NSString stringWithFormat:@"%@\n",currentDirectoryPath]];
+                [contents writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:nil];
+            }
             
-            NSString*output1=runCommand(nil, launchPath2,arguments2);
-            NSLog(@"%@\n",output1);
-            NSString *string = [NSString stringWithFormat:@"%@\n%@\n%@\n%@\n",output1,updateType,name,target];
-            [tv1 setString:string];
         }else{
-            NSString*output1=runCommand(nil, launchPath2,arguments2);
-            NSLog(@"%@\n",output1);
-            NSString *string = [NSString stringWithFormat:@"%@\n%@\n%@\n%@\n",output1,updateType,name,target];
-            [tv1 setString:string];
-        }
+
+            if (![[NSFileManager defaultManager] fileExistsAtPath:location]) {
+                [tv1 setString:@"This path isn't exist!!"];
+            }else{
+                NSString*output1=runCommand(nil, launchPath2,arguments2);
+                NSLog(@"%@\n",output1);
+                NSString *string = [NSString stringWithFormat:@"%@\n",output1];
+                [tv1 setString:string];
+            }
+            }
     }else{
         [lb_warning setStringValue:@"Please enter a path!"];
     }
@@ -251,13 +272,13 @@
 
 //delete crunch
 - (IBAction)btn_deleteCrunch:(id)sender {
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"locationPath" ofType:@"txt"];
-        NSString *location=[tf1 stringValue];
     
     
+    NSString *location=[tf1 stringValue];
     if(![location isEqual: @""]){
         
         NSString * decrunch = [NSString stringWithFormat:@"%@/bin/res",location];
+        NSString * decrunch2 = [NSString stringWithFormat:@"%@/bin/res/crunch",location];
         
         //remove crunch
         NSString * launchPath = @"/bin/rm";
@@ -266,34 +287,15 @@
                               @"crunch",
                               nil];
         
-        NSString *contents = [NSString stringWithContentsOfFile:path];
-        arr = [contents componentsSeparatedByCharactersInSet:
-               [NSCharacterSet characterSetWithCharactersInString:@"\n"]];
-        
-        for(i=0;i<arr.count;i++){
-            
-            originalString = arr[i];
-            
-            NSLog(@"%@ %@", location, originalString);
-            
-            if(![originalString isEqualToString: location]){
-                d=i;
-            }else{
-                break;
-            }
-        }
-        
-        if(d==arr.count-1){
-            NSString*output1=runCommand(decrunch, launchPath,arguments);
-            NSLog(@"%@\n",output1);
-            NSString *string = [NSString stringWithFormat:@"%@\n",output1];
-            [tv1 setString:string];
+        if (![[NSFileManager defaultManager] fileExistsAtPath:decrunch2]) {
+            [tv1 setString:@"No Crunch!!"];
         }else{
             NSString*output1=runCommand(decrunch, launchPath,arguments);
             NSLog(@"%@\n",output1);
-            NSString *string = [NSString stringWithFormat:@"%@\n",output1];
-            [tv1 setString:string];
+            [tv1 setString:@"Delete Crunch Successfully!!"];
         }
+        
+        
     }else{
         [lb_warning setStringValue:@"Please enter a path!"];
     }
@@ -303,7 +305,10 @@
 //android debug
 - (IBAction)btn1:(id)sender {
     
-    NSString *path_option = [[NSBundle mainBundle] pathForResource:@"android_ant_path" ofType:@"txt"];
+    NSString* filePath2 = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString* fileName2 = @"android_ant_path.txt";
+    NSString* path_option = [filePath2 stringByAppendingPathComponent:fileName2];
+//    NSString *path_option = [[NSBundle mainBundle] pathForResource:@"android_ant_path" ofType:@"txt"];
     
     NSString *contents_option = [NSString stringWithContentsOfFile:path_option];
     arr_option = [contents_option componentsSeparatedByCharactersInSet:
@@ -317,11 +322,14 @@
         NSArray *arguments3 = [NSArray arrayWithObjects:
                                @"debug",
                                nil];
-        
-        NSString*output3=runCommand( currentDirectoryPath,launchPath3,arguments3);
-        NSLog(@"%@\n",output3);
-        NSString *string = [NSString stringWithFormat:@"%@\n",output3];
-        [tv1 setString:string];
+        if (![[NSFileManager defaultManager] fileExistsAtPath:location]) {
+            [tv1 setString:@"This path isn't exist!!"];
+        }else{
+            NSString*output3=runCommand( currentDirectoryPath,launchPath3,arguments3);
+            NSLog(@"%@\n",output3);
+            NSString *string = [NSString stringWithFormat:@"%@\n",output3];
+            [tv1 setString:string];
+        }
     }else{
         [lb_warning setStringValue:@"Please enter a path!"];
     }
@@ -336,11 +344,11 @@
     
     NSString *libLocation =[tf1 stringValue];
     
-    //    NSString* filePath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    //    NSString* fileName = @"libRecord_j2a.txt";
-    //    NSString* fileAtPath = [filePath stringByAppendingPathComponent:fileName];
+    NSString* filePath1 = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString* fileName1 = @"locationPath.txt";
+    NSString* path = [filePath1 stringByAppendingPathComponent:fileName1];
     
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"locationPath" ofType:@"txt"];
+//    NSString *path = [[NSBundle mainBundle] pathForResource:@"locationPath" ofType:@"txt"];
     
     NSString *contents = [NSString stringWithContentsOfFile:path];
     arr = [contents componentsSeparatedByCharactersInSet:
@@ -414,11 +422,11 @@
 //tableView of the path
 - (void) awakeFromNib {
     
-//    NSString* filePath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-//    NSString* fileName = @"locationPath.txt";
-//    NSString* path = [filePath stringByAppendingPathComponent:fileName];
+    NSString* filePath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString* fileName = @"locationPath.txt";
+    NSString* path = [filePath stringByAppendingPathComponent:fileName];
     
-     NSString *path = [[NSBundle mainBundle] pathForResource:@"locationPath" ofType:@"txt"];
+//     NSString *path = [[NSBundle mainBundle] pathForResource:@"locationPath" ofType:@"txt"];
     
     NSString *contents= [NSString stringWithContentsOfFile:path];
     arr = [contents componentsSeparatedByCharactersInSet:

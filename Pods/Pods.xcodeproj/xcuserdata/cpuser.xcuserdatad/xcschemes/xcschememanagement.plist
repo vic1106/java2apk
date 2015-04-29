@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Pods-javaToapk-NMSSH.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-javaToapk-ZXingObjC.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -17,12 +22,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0DDFB6F37C8641432A6F1528</key>
+		<key>7A4645A54DE4439B98570719</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>962EBCFB0ED834F3746C47F9</key>
+		<key>B8663ED1414C487BCFA8BC8D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EC891B4508A63AC05E987E7E</key>
 		<dict>
 			<key>primary</key>
 			<true/>

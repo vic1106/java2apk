@@ -7,6 +7,8 @@ pod 'mailcore2-osx', '~> 0.5.2'
 
 pod 'ZXingObjC', '~> 3.0'
 
+pod 'NMSSH'
+
 end
 
 target 'javaToapkTests' do

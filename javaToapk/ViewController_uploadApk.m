@@ -10,6 +10,8 @@
 #import "CkoSFtp.h"
 #import "CkoSFtpDir.h"
 #import "CkoSFtpFile.h"
+#import <NMSSH/NMSSH.h>
+
 
 
 @interface ViewController_uploadApk ()
@@ -86,6 +88,8 @@
     NSString * name=[tf_Name stringValue];
     NSString * password=[tf_Password stringValue];
     NSString * port1=[tf_Port stringValue];
+    NSString * path_remote=[NSString stringWithFormat:@"%@%@",host,apkName];
+    NSString * path_remote2=[NSString stringWithFormat:@"/var/www/%@",path_remote];
     
     NSString* filePath3 = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     NSString* fileName3 = @"uploadRecord_j2a.txt";
@@ -130,76 +134,35 @@
     //  Important: It is helpful to send the contents of the
     //  sftp.LastErrorText property when requesting support.
     if(![path isEqual: @""]&&![apkName isEqual: @""]&&![host isEqual: @""]&&![name isEqual: @""]&&![password isEqual: @""]&&![port1 isEqual: @""]){
+        NMSSHSession *session = [NMSSHSession connectToHost:host
+                                               withUsername:name];
         
-    CkoSFtp *sftp = [[CkoSFtp alloc] init];
-    
-    //  Any string automatically begins a fully-functional 30-day trial.
-    BOOL success = [sftp UnlockComponent: @"abcdefg"];
-    if (success != YES) {
-        NSLog(@"%@",sftp.LastErrorText);
-        return;
-    }
-    
-    //  Set some timeouts, in milliseconds:
-    sftp.ConnectTimeoutMs = [NSNumber numberWithInt:15000];
-    sftp.IdleTimeoutMs = [NSNumber numberWithInt:15000];
-    
-    //  Connect to the SSH server.
-    //  The standard SSH port = 22
-    //  The hostname may be a hostname or IP address.
-    int port;
-        port = [tf_Port intValue];
-        success = [sftp Connect: host port: [NSNumber numberWithInt: port]];
-        if (success != YES) {
-            NSLog(@"%@",sftp.LastErrorText);
-            [tv_detail setString:[NSString stringWithFormat:@"%@",sftp.LastErrorText]];
-                        return;
-        
+        if (session.isConnected) {
+            [session authenticateByPassword:password];
+            
+            if (session.isAuthorized) {
+                NSLog(@"Authentication succeeded");
+            }else{
+                [tv_detail setString:@"ID or Password is wrong!!"];
+                return;
+            }
         }
-    //  Authenticate with the SSH server.  Chilkat SFTP supports
-    //  both password-based authenication as well as public-key
-    //  authentication.  This example uses password authenication.
-    success = [sftp AuthenticatePw: name password: password];
-    if (success != YES) {
-        NSLog(@"%@",sftp.LastErrorText);
-        [tv_detail setString:[NSString stringWithFormat:@"%@",sftp.LastErrorText]];
-        return;
-    }
-    
-    //  After authenticating, the SFTP subsystem must be initialized:
-    success = [sftp InitializeSftp];
-    if (success != YES) {
-        NSLog(@"%@",sftp.LastErrorText);
-        [tv_detail setString:[NSString stringWithFormat:@"%@",sftp.LastErrorText]];
-        return;
-    }
-    
-    //  Upload from the local file to the SSH server.
-    //  Important -- the remote filepath is the 1st argument,
-    //  the local filepath is the 2nd argument;
-    NSString *remoteFilePath = [NSString stringWithFormat:@"/var/www/%@%@",host,apkName];
-    NSString *localFilePath = path;
-    success = [sftp UploadFileByName: remoteFilePath localFilePath: localFilePath];
-    if (success != YES) {
-        NSLog(@"%@",sftp.LastErrorText);
-        [tv_detail setString:[NSString stringWithFormat:@"%@",sftp.LastErrorText]];
-        return;
-    }
-    
-    
-    NSLog(@"%@",@"Success.");
-    remotePath=[NSString stringWithFormat:@"%@%@",host,apkName];
-    [tv_detail setString:[NSString stringWithFormat:@"Upload success!!\n\n\n\nUpload location:\n%@\n\n\n\n",remotePath]];
-//        NSString* filePath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-//        NSString* fileName = @"uploadRecord_j2a.txt";
-//        NSString* path = [filePath stringByAppendingPathComponent:fileName];
-//        if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
-//            [[NSFileManager defaultManager] createFileAtPath:path contents:@"Upload Record:\n" attributes:nil];
-//        }
-//        
-//        if (![[NSFileManager defaultManager] fileExistsAtPath:path2]) {
-//            [[NSFileManager defaultManager] createFileAtPath:path2 contents:@"Date and Time:\n" attributes:nil];
-//        }
+        
+        NSError *error = nil;
+        NSString *response = [session.channel execute:@"ls -l /var/www/" error:&error];
+        NSLog(@"List of my sites: %@", response);
+        
+        BOOL success = [session.channel uploadFile:path to:path_remote2];
+        NSLog(@"%hhd",success);
+        if(success==YES){
+             [tv_detail setString:[NSString stringWithFormat:@"Upload success!!\n\n\n\nUpload location:\n%@\n\n\n\n",path_remote]];
+        }else{
+            [tv_detail setString:@"Path of file is wrong!!"];
+            return;
+        }
+        
+        [session disconnect];
+
         
         NSString *contents = [NSString stringWithContentsOfFile:path2];
         arr = [contents componentsSeparatedByCharactersInSet:
@@ -209,9 +172,9 @@
                 
                 originalString = arr[i];
                 originalString2 = comboBoxItems[i];
-                NSLog(@"%@ %@", remotePath, originalString);
+                NSLog(@"%@ %@", path_remote, originalString);
                 
-                if(![originalString isEqualToString: remotePath]){
+                if(![originalString isEqualToString: path_remote]){
                     d=i;
                 }else{
                     NSString *string = @"This path added already!";
@@ -223,7 +186,7 @@
             if(d==arr.count-1){
                 
                 contents2 = [NSString stringWithContentsOfFile:path2];
-                contents2 = [contents2 stringByAppendingString:[NSString stringWithFormat:@"%@\n",remotePath]];
+                contents2 = [contents2 stringByAppendingString:[NSString stringWithFormat:@"%@\n",path_remote]];
                 [contents2 writeToFile:path2 atomically:YES encoding:NSUTF8StringEncoding error:nil];
                 
                 if(arr.count>=20){
@@ -247,7 +210,7 @@
         for(i=0;i<comboBoxItems.count;i++){
             
             originalString2 = comboBoxItems[i];
-            NSLog(@"%@ %@", remotePath, originalString2);
+            NSLog(@"%@ %@", path_remote, originalString2);
         
             if(![originalString2 isEqualToString: apkName]){
                 b=i;

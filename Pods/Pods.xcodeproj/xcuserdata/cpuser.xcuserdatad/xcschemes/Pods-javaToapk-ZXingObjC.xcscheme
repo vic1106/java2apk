@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "962EBCFB0ED834F3746C47F9"
+               BlueprintIdentifier = "EC891B4508A63AC05E987E7E"
                BuildableName = "libPods-javaToapk-ZXingObjC.a"
                BlueprintName = "Pods-javaToapk-ZXingObjC"
                ReferencedContainer = "container:Pods.xcodeproj">

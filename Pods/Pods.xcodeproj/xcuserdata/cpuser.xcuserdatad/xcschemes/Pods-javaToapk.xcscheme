@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0DDFB6F37C8641432A6F1528"
+               BlueprintIdentifier = "7A4645A54DE4439B98570719"
                BuildableName = "libPods-javaToapk.a"
                BlueprintName = "Pods-javaToapk"
                ReferencedContainer = "container:Pods.xcodeproj">
